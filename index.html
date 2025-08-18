@@ -1,0 +1,457 @@
+  <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Soraia Sena Confeitaria Artesanal</title>
+  <meta name="description" content="Doces artesanais que encantam no sabor e no olhar. Bolos, tortas e kits festa feitos com carinho." />
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --rosa:#ec5a89;
+      --choc:#4b2e2e;
+      --dourado:#d4af37;
+      --branco:#ffffff;
+      --rosa-claro:#ffeaf1;
+      --creme:#fff8f0;
+    }
+    html{ scroll-behavior: smooth; }
+    .font-script{ font-family:"Great Vibes", cursive; }
+    .font-serifa{ font-family:"Playfair Display", serif; }
+    .font-body{ font-family:"Poppins", sans-serif; }
+    /* Delicado brilho dourado */
+    .gold-gradient{
+      background: linear-gradient(90deg,#c9a634, #d4af37, #e9cf79);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    /* Molduras suaves para imagens demo */
+    .demo-frame{
+      background: linear-gradient(135deg, #fff, #fff) padding-box,
+                  linear-gradient(135deg, rgba(212,175,55,.35), rgba(236,90,137,.35)) border-box;
+      border: 2px solid transparent;
+      border-radius: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+    .photo-placeholder{
+      background: linear-gradient(135deg, #fff4f7, #ffe8f0);
+      color: #4b2e2ecc;
+    }
+    .chip{
+      display:inline-flex;align-items:center;gap:.5rem;
+      background:#fff; color:#4b2e2e; border:1px solid #f3e6ea; border-radius:999px; padding:.35rem .75rem;
+    }
+    /* Botão flutuante WhatsApp */
+    .whats-fab{
+      position: fixed; right: 18px; bottom: 18px; z-index: 60;
+      background: #25D366; color: #fff; border-radius: 999px;
+      box-shadow: 0 12px 24px rgba(37,211,102,.35);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .whats-fab:hover{ transform: translateY(-2px); box-shadow: 0 16px 28px rgba(37,211,102,.45); }
+    /* Seções com fundo aconchegante */
+    .soft-section{ background: radial-gradient(1200px 600px at 10% 0%, #fff7fb 0, #fff 45%), radial-gradient(900px 500px at 90% 20%, #fff3f7 0, #fff 60%); }
+    .soft-rose{ background: linear-gradient(180deg,#fff8fa 0,#fff 100%); }
+    /* Pequenas estrelas douradas */
+    .sparkle:after{
+      content:"✦"; position:absolute; right:12px; top:10px; color:#d4af37a6; font-size:14px;
+    }
+  </style>
+</head>
+<body class="font-body text-[17px] leading-relaxed text-[#4b2e2e] bg-[#fff1f6]">
+
+  <!-- Aviso de imagens demo + ação rápida -->
+  <div class="w-full bg-[#fff1f6] border-b border-[#f7dce6] text-[#4b2e2e]">
+    <div class="max-w-7xl mx-auto px-6 py-3 flex flex-col md:flex-row items-center justify-between gap-3">
+      <p class="text-sm md:text-base">Imagens marcadas como “Demo”. Troque pelas suas fotos reais quando quiser.</p>
+      <div class="flex items-center gap-2">
+        <button id="btnTrocarTodas" class="px-4 py-2 rounded-full bg-[color:var(--rosa)] text-white hover:opacity-95">Trocar todas as fotos</button>
+        <a href="#contato" class="px-4 py-2 rounded-full border border-[#ec5a89] text-[#ec5a89] hover:bg-[#ffeaf1]">Falar no WhatsApp</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="bg-white/95 backdrop-blur sticky top-0 z-50 border-b border-[#f5e9ed]">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="h-10 w-10 rounded-full" style="background: radial-gradient(circle at 30% 30%, #ffd7e3, #ec5a89);"></div>
+        <div>
+          <div class="font-script text-2xl leading-none text-[color:var(--choc)]">Soraia Sena</div>
+          <div class="uppercase tracking-widest text-xs text-[#a07676]">Confeitaria Artesanal</div>
+        </div>
+      </div>
+      <nav class="hidden md:flex items-center gap-6 text-[15px]">
+        <a href="#catalogo" class="hover:text-[color:var(--rosa)]">Catálogo</a>
+        <a href="#sobre" class="hover:text-[color:var(--rosa)]">Sobre</a>
+        <a href="#depoimentos" class="hover:text-[color:var(--rosa)]">Depoimentos</a>
+        <a href="#contato" class="hover:text-[color:var(--rosa)]">Contato</a>
+        <a href="#catalogo" class="ml-1 px-4 py-2 rounded-full bg-[color:var(--rosa)] text-white hover:opacity-95">Ver Catálogo</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="soft-section">
+    <div class="max-w-7xl mx-auto px-6 py-14 md:py-20 grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <h1 class="text-4xl md:text-5xl font-serifa text-[color:var(--choc)] leading-tight">
+          <span class="font-script text-5xl md:text-6xl text-[color:var(--rosa)]">Doces artesanais</span><br/>
+          que encantam no sabor e no olhar
+        </h1>
+        <p class="mt-4 text-[#6a5050]">Bolos, tortas e kits festa feitos à mão, com ingredientes selecionados e acabamento impecável.</p>
+        <div class="mt-6 flex items-center gap-3">
+          <a href="#catalogo" class="px-6 py-3 rounded-full bg-[color:var(--rosa)] text-white hover:opacity-95">Ver Catálogo</a>
+          <a href="#sobre" class="px-6 py-3 rounded-full border border-[#ec5a89] text-[color:var(--rosa)] hover:bg-[#ffeaf1]">Conheça a história</a>
+        </div>
+        <div class="mt-6 flex items-center gap-2 text-sm text-[#a07676]">
+          <span class="chip">💳 Aceitamos cartões</span>
+          <span class="chip">⚡ Pix</span>
+          <span class="chip">💖 Feito com carinho</span>
+        </div>
+      </div>
+      <div class="demo-frame p-2">
+        <div class="relative rounded-xl overflow-hidden">
+          <img id="imgHero" alt="Bolo de vitrine" class="w-full h-[360px] md:h-[460px] object-cover" src="https://images.unsplash.com/photo-1605470760440-1b62cc9ee1ad?q=80&w=1200&auto=format&fit=crop" />
+          <div class="absolute inset-0 flex items-end">
+            <div class="w-full p-4 flex justify-between items-center">
+              <span class="text-[#4b2e2e] bg-white/80 backdrop-blur rounded-full px-4 py-2 text-sm">Foto Demo • Troque pela sua</span>
+              <button data-target="imgHero" class="btnTrocarUma px-3 py-2 rounded-full bg-white/85 hover:bg-white text-[color:var(--rosa)] sparkle">Trocar foto</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sobre -->
+  <section id="sobre" class="soft-rose">
+    <div class="max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-10 items-center">
+      <div class="order-2 md:order-1">
+        <h2 class="text-3xl md:text-4xl font-serifa text-[color:var(--choc)]">Quem somos</h2>
+        <div class="mt-2 h-1 w-24 rounded-full" style="background:linear-gradient(90deg,#d4af37,#ec5a89);"></div>
+        <p class="mt-5 text-[#6a5050]">
+          A Soraia Sena Confeitaria Artesanal nasceu do amor por celebrar a vida em cada detalhe. Produzimos doces finos e bolos com técnicas artesanais, ingredientes selecionados e um toque de elegância que traduz carinho em forma de sabor.
+        </p>
+        <p class="mt-3 text-[#6a5050]">
+          Nossa proposta é unir delicadeza, feminilidade e sofisticação em cada pedido, do simples ao luxo, sempre com atendimento próximo e personalizado.
+        </p>
+      </div>
+      <div class="order-1 md:order-2 demo-frame p-2">
+        <div class="relative rounded-xl overflow-hidden">
+          <img id="imgSobre" alt="Confeiteira no ateliê" class="w-full h-[340px] object-cover" src="https://images.unsplash.com/photo-1560089175-2ec1db54f0b0?q=80&w=1200&auto=format&fit=crop" />
+          <div class="absolute inset-0 flex items-end">
+            <div class="w-full p-4 flex justify-end">
+              <button data-target="imgSobre" class="btnTrocarUma px-3 py-2 rounded-full bg-white/85 hover:bg-white text-[color:var(--rosa)] sparkle">Trocar foto</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Catálogo -->
+  <section id="catalogo" class="bg-white">
+    <div class="max-w-7xl mx-auto px-6 py-16">
+      <div class="flex items-end justify-between gap-6 flex-wrap">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-serifa text-[color:var(--choc)]">Catálogo</h2>
+          <div class="mt-2 h-1 w-28 rounded-full" style="background:linear-gradient(90deg,#d4af37,#ec5a89);"></div>
+        </div>
+        <div class="flex items-center gap-2 text-sm text-[#6a5050]">
+          <span class="chip">🍰 Bolos</span>
+          <span class="chip">🥧 Tortas</span>
+          <span class="chip">🎉 Kits Festa</span>
+        </div>
+      </div>
+
+      <!-- Cards de categorias -->
+      <div class="mt-10 grid lg:grid-cols-3 gap-8">
+        <!-- Bolos Simples -->
+        <div class="border border-[#f2e6ea] rounded-2xl p-6 hover:shadow-md transition bg-[#fffafa]">
+          <div class="flex items-center justify-between">
+            <h3 class="font-serifa text-2xl text-[color:var(--choc)]">Bolos Simples</h3>
+            <span class="gold-gradient font-semibold">Clássicos</span>
+          </div>
+          <ul class="mt-4 space-y-2 text-[#6a5050]">
+            <li>1kg e 750g — <b class="text-[color:var(--choc)]">R$100,00</b></li>
+            <li>2kg e 500g — <b class="text-[color:var(--choc)]">R$170,00</b></li>
+            <li>3kg — <b class="text-[color:var(--choc)]">R$210,00</b></li>
+          </ul>
+          <div class="mt-5 demo-frame p-2">
+            <div class="relative rounded-xl overflow-hidden">
+              <img id="imgBoloSimples" alt="Bolo simples decorado" class="w-full h-44 object-cover" src="https://images.unsplash.com/photo-1495147466023-ac5c588e2e94?q=80&w=1200&auto=format&fit=crop" />
+              <button data-target="imgBoloSimples" class="btnTrocarUma absolute bottom-3 right-3 px-3 py-1.5 rounded-full bg-white/85 text-[color:var(--rosa)]">Trocar foto</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bolos de 2 andares -->
+        <div class="border border-[#f2e6ea] rounded-2xl p-6 hover:shadow-md transition bg-[#fffafa]">
+          <div class="flex items-center justify-between">
+            <h3 class="font-serifa text-2xl text-[color:var(--choc)]">Bolos de 2 andares</h3>
+            <span class="gold-gradient font-semibold">Celebrações</span>
+          </div>
+          <ul class="mt-4 space-y-2 text-[#6a5050]">
+            <li>4kg — <b class="text-[color:var(--choc)]">R$290,00</b></li>
+            <li>5kg — <b class="text-[color:var(--choc)]">R$350,00</b></li>
+            <li>6kg — <b class="text-[color:var(--choc)]">R$420,00</b></li>
+            <li>7kg — <b class="text-[color:var(--choc)]">R$490,00</b></li>
+            <li>8kg — <b class="text-[color:var(--choc)]">R$560,00</b></li>
+            <li>10kg — <b class="text-[color:var(--choc)]">R$720,00</b></li>
+            <li>6kg (3 andares) — <b class="text-[color:var(--choc)]">R$720,00</b></li>
+          </ul>
+          <div class="mt-5 demo-frame p-2">
+            <div class="relative rounded-xl overflow-hidden">
+              <img id="imgBoloAndares" alt="Bolo de andares" class="w-full h-44 object-cover" src="https://images.unsplash.com/photo-1589923188900-85dae523342b?q=80&w=1200&auto=format&fit=crop" />
+              <button data-target="imgBoloAndares" class="btnTrocarUma absolute bottom-3 right-3 px-3 py-1.5 rounded-full bg-white/85 text-[color:var(--rosa)]">Trocar foto</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recheios e Extras -->
+        <div class="border border-[#f2e6ea] rounded-2xl p-6 hover:shadow-md transition bg-[#fffafa]">
+          <h3 class="font-serifa text-2xl text-[color:var(--choc)]">Recheios Disponíveis</h3>
+          <p class="mt-3 text-[#6a5050]">Chocolate bem casado, Prestígio, Sonho de Valsa, Maracujá, Ninho, Chocolate branco, 3 Amores.</p>
+          <h4 class="mt-5 font-medium text-[color:var(--choc)]">Extras</h4>
+          <p class="text-[#6a5050]">Morango, Nutella, Doce de Leite.</p>
+          <div class="mt-5 demo-frame p-2">
+            <div class="relative rounded-xl overflow-hidden">
+              <img id="imgRecheios" alt="Recheios e camadas" class="w-full h-44 object-cover" src="https://images.unsplash.com/photo-1508779018996-4f4fd3f100fc?q=80&w=1200&auto=format&fit=crop" />
+              <button data-target="imgRecheios" class="btnTrocarUma absolute bottom-3 right-3 px-3 py-1.5 rounded-full bg-white/85 text-[color:var(--rosa)]">Trocar foto</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tortas -->
+      <div class="mt-12 grid md:grid-cols-2 gap-8">
+        <div class="border border-[#f2e6ea] rounded-2xl p-6 bg-[#fffafa]">
+          <h3 class="font-serifa text-2xl text-[color:var(--choc)]">Tortas</h3>
+          <p class="mt-2 text-[#6a5050]">A partir de <b>R$65/kg</b> – mínimo 1,5kg</p>
+          <p class="mt-3 text-[#6a5050]">
+            Sabores: Chocolate, Bem Casado, Prestígio, Sonho de Valsa, KitKat, Morango, Abacaxi, Maracujá, Limão, Floresta Negra, Churros, 3 Amores, Chocolate Branco, Crocante, Doce de Leite Crocante, entre outros.
+          </p>
+        </div>
+        <div class="demo-frame p-2">
+          <div class="relative rounded-xl overflow-hidden">
+            <img id="imgTortas" alt="Tortas variadas" class="w-full h-64 object-cover" src="https://images.unsplash.com/photo-1542827636-70dbbb2fb221?q=80&w=1200&auto=format&fit=crop" />
+            <button data-target="imgTortas" class="btnTrocarUma absolute bottom-3 right-3 px-3 py-1.5 rounded-full bg-white/85 text-[color:var(--rosa)]">Trocar foto</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kits Festa -->
+      <div class="mt-12 grid lg:grid-cols-2 gap-8">
+        <div class="border border-[#f2e6ea] rounded-2xl p-6 bg-[#fffafa]">
+          <h3 class="font-serifa text-2xl text-[color:var(--choc)]">Kits Festa – por Pessoas</h3>
+          <ul class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-y-2 text-[#6a5050]">
+            <li>10 pessoas — <b>R$100,00</b> <span class="text-xs block text-[#8f6f6f]">1kg de torta, 25 doces, 25 salgados</span></li>
+            <li>15 pessoas — <b>R$150,00</b></li>
+            <li>20 pessoas — <b>R$210,00</b></li>
+            <li>30 pessoas — <b>R$260,00</b></li>
+            <li>40 pessoas — <b>R$335,00</b></li>
+            <li>45 pessoas — <b>R$420,00</b></li>
+            <li>50 pessoas — <b>R$530,00</b></li>
+            <li>60 pessoas — <b>R$580,00</b></li>
+            <li>70 pessoas — <b>R$635,00</b></li>
+          </ul>
+        </div>
+        <div class="border border-[#f2e6ea] rounded-2xl p-6 bg-[#fffafa]">
+          <h3 class="font-serifa text-2xl text-[color:var(--choc)]">Kits Festa Luxo</h3>
+          <ul class="mt-4 space-y-2 text-[#6a5050]">
+            <li>Kit 1 — <b>R$260,00</b> <span class="text-xs block text-[#8f6f6f]">2kg chantininho, 50 doces, 70 salgados</span></li>
+            <li>Kit 2 — <b>R$830,00</b> <span class="text-xs block text-[#8f6f6f]">5kg chantininho, 200 doces, 300 salgados, 10 cupcakes, 10 trufas, 10 pirulitos</span></li>
+            <li>Kit 3 — <b>R$950,00</b> <span class="text-xs block text-[#8f6f6f]">7kg chantininho, 200 doces, 300 salgados, 10 cupcakes, 10 trufas, 10 pirulitos</span></li>
+            <li>Kit 4 — <b>R$1.000,00</b> <span class="text-xs block text-[#8f6f6f]">5kg chantininho, 200 doces, 200 salgados, 10 cupcakes, 10 trufas, 10 pirulitos, 40 mini pizza, 40 cachorrinhos, 8 litros refrigerante</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-8 grid lg:grid-cols-3 gap-8">
+        <div class="border border-[#f2e6ea] rounded-2xl p-6 bg-[#fffafa]">
+          <h3 class="font-serifa text-xl text-[color:var(--choc)]">Kit Festa Personalizado</h3>
+          <p class="mt-2 text-[#6a5050]">A partir de <b>R$220,00</b></p>
+          <p class="text-[#6a5050] text-sm">Inclui: 1,5kg de bolo, 25 docinhos, 25 salgados, 5 cupcakes, 5 bolos no palito, 5 trufas.</p>
+        </div>
+        <div class="border border-[#f2e6ea] rounded-2xl p-6 bg-[#fffafa]">
+          <h3 class="font-serifa text-xl text-[color:var(--choc)]">Kit Festa Simples</h3>
+          <p class="mt-2 text-[#6a5050]"><b>R$80,00</b></p>
+          <p class="text-[#6a5050] text-sm">Topo a partir de R$12,00 • Topo 3D sob consulta</p>
+        </div>
+        <div class="border border-[#f2e6ea] rounded-2xl p-6 bg-[#fffafa]">
+          <h3 class="font-serifa text-xl text-[color:var(--choc)]">Observações</h3>
+          <p class="mt-2 text-[#6a5050] text-sm">Glitter, pintura e sabores gourmet cobrados à parte.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Depoimentos -->
+  <section id="depoimentos" class="soft-rose">
+    <div class="max-w-7xl mx-auto px-6 py-16">
+      <h2 class="text-3xl md:text-4xl font-serifa text-[color:var(--choc)]">Depoimentos de Clientes</h2>
+      <div class="mt-2 h-1 w-32 rounded-full" style="background:linear-gradient(90deg,#d4af37,#ec5a89);"></div>
+
+      <div class="mt-8 grid md:grid-cols-3 gap-8">
+        <!-- Depoimento 1 -->
+        <div class="border border-[#f2e6ea] rounded-2xl p-5 bg-white">
+          <div class="demo-frame p-2">
+            <div class="relative rounded-xl overflow-hidden">
+              <img id="dep1" alt="Bolo entregue ao cliente" class="w-full h-40 object-cover" src="https://images.unsplash.com/photo-1627202518147-1c78586e04b3?q=80&w=1200&auto=format&fit=crop" />
+              <button data-target="dep1" class="btnTrocarUma absolute bottom-3 right-3 px-3 py-1.5 rounded-full bg-white/85 text-[color:var(--rosa)]">Trocar foto</button>
+            </div>
+          </div>
+          <p class="mt-4 text-[#6a5050]">“Perfeito! O bolo estava maravilhoso e lindo. Atendimento impecável.”</p>
+          <p class="mt-1 text-sm text-[#8f6f6f]">— Ana Paula</p>
+        </div>
+        <!-- Depoimento 2 -->
+        <div class="border border-[#f2e6ea] rounded-2xl p-5 bg-white">
+          <div class="demo-frame p-2">
+            <div class="relative rounded-xl overflow-hidden">
+              <img id="dep2" alt="Bolo temático" class="w-full h-40 object-cover" src="https://images.unsplash.com/photo-1494346480775-936a1c6a87e2?q=80&w=1200&auto=format&fit=crop" />
+              <button data-target="dep2" class="btnTrocarUma absolute bottom-3 right-3 px-3 py-1.5 rounded-full bg-white/85 text-[color:var(--rosa)]">Trocar foto</button>
+            </div>
+          </div>
+          <p class="mt-4 text-[#6a5050]">“Entrega no horário e sabor incrível! Fez toda a diferença na festa.”</p>
+          <p class="mt-1 text-sm text-[#8f6f6f]">— Rodrigo</p>
+        </div>
+        <!-- Depoimento 3 -->
+        <div class="border border-[#f2e6ea] rounded-2xl p-5 bg-white">
+          <div class="demo-frame p-2">
+            <div class="relative rounded-xl overflow-hidden">
+              <img id="dep3" alt="Torta decorada" class="w-full h-40 object-cover" src="https://images.unsplash.com/photo-1551024709-8f23befc6cf7?q=80&w=1200&auto=format&fit=crop" />
+              <button data-target="dep3" class="btnTrocarUma absolute bottom-3 right-3 px-3 py-1.5 rounded-full bg-white/85 text-[color:var(--rosa)]">Trocar foto</button>
+            </div>
+          </div>
+          <p class="mt-4 text-[#6a5050]">“A decoração ficou de cinema e o recheio delicioso. Recomendo!”</p>
+          <p class="mt-1 text-sm text-[#8f6f6f]">— Juliana</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contato & Localização -->
+  <section id="contato" class="bg-white">
+    <div class="max-w-7xl mx-auto px-6 py-16 grid lg:grid-cols-2 gap-10 items-start">
+      <div>
+        <h2 class="text-3xl md:text-4xl font-serifa text-[color:var(--choc)]">Contato & Localização</h2>
+        <div class="mt-2 h-1 w-36 rounded-full" style="background:linear-gradient(90deg,#d4af37,#ec5a89);"></div>
+
+        <div class="mt-6 space-y-4 text-[#6a5050]">
+          <p><a class="text-[color:var(--rosa)] underline text-2xl" href="https://wa.me/55" target="_blank" rel="noopener" aria-label="WhatsApp"><img alt="WhatsApp" src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png" class="inline w-7 h-7 align-middle"/></a></p>
+          <p><a class="text-[color:var(--rosa)] underline text-2xl" href="https://instagram.com/soraiia_senna" target="_blank" rel="noopener" aria-label="Instagram"><img alt="Instagram" src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" class="inline w-7 h-7 align-middle"/></a></p>
+          <p class="flex items-start gap-2"><span>📍</span> <span>Av José da Câmara Vieira, prox. à UPA da Vila Sotave.</span></p>
+          <p>Pagamento: Aceita todos os cartões e Pix.</p>
+          <div class="mt-4 flex gap-3">
+            <a href="#catalogo" class="px-5 py-2.5 rounded-full bg-[color:var(--rosa)] text-white hover:opacity-95">Ver Catálogo</a>
+            <a href="https://wa.me/55" target="_blank" rel="noopener" class="px-5 py-2.5 rounded-full border border-[#ec5a89] text-[color:var(--rosa)] hover:bg-[#ffeaf1]">Fazer orçamento</a>
+          </div>
+        </div>
+      </div>
+      <div class="demo-frame p-2">
+        <div class="rounded-xl overflow-hidden">
+          <!-- Mapa incorporado pela busca do endereço -->
+          <iframe title="Mapa - Soraia Sena Confeitaria Artesanal" class="w-full h-[360px]" style="border:0;"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=Av%20Jos%C3%A9%20da%20C%C3%A2mara%20Vieira%2C%20Vila%20Sotave&output=embed"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rodapé -->
+  <footer class="bg-[#2f1c1c] text-[#f7eaea]">
+    <div class="max-w-7xl mx-auto px-6 py-12 grid md:grid-cols-3 gap-8">
+      <div>
+        <div class="font-script text-3xl">Soraia Sena</div>
+        <div class="uppercase tracking-widest text-xs text-[#e2c9c9]">Confeitaria Artesanal</div>
+        <p class="mt-4 text-[#d9bdbd]">Delicadeza, feminilidade e sofisticação em cada detalhe.</p>
+      </div>
+      <div>
+        <h4 class="font-serifa text-lg">Links rápidos</h4>
+        <ul class="mt-3 space-y-2 text-[#e9d7d7]">
+          <li><a class="hover:text-white" href="#catalogo">Catálogo</a></li>
+          <li><a class="hover:text-white" href="#sobre">Sobre</a></li>
+          <li><a class="hover:text-white" href="#contato">Contato</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-serifa text-lg">Siga e fale com a gente</h4>
+        <div class="mt-3 flex items-center gap-3">
+          <a class="px-3 py-1.5 rounded-full bg-[#ec5a89] text-white hover:opacity-95" href="https://instagram.com/soraiia_senna" target="_blank" rel="noopener">Instagram</a>
+          <a class="px-3 py-1.5 rounded-full border border-[#ec5a89] text-[#ec5a89] hover:bg-[#421f2644]" href="https://wa.me/55" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-[#4a2f2f]">
+      <div class="max-w-7xl mx-auto px-6 py-4 text-sm text-[#cdb1b1] flex items-center justify-between">
+        <span>© <span id="ano"></span> Soraia Sena Confeitaria Artesanal</span>
+        <span class="gold-gradient font-medium">feito com amor</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botão flutuante WhatsApp -->
+  <a href="https://wa.me/55" target="_blank" rel="noopener" aria-label="WhatsApp" class="whats-fab flex items-center justify-center w-14 h-14 p-0">
+    <img alt="WhatsApp" src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png" class="w-7 h-7"/>
+  </a>
+
+  <script>
+    // Atualiza ano no rodapé
+    document.getElementById('ano').textContent = new Date().getFullYear();
+
+    // Placeholders agradáveis quando sem imagem
+    function ensurePlaceholders(){
+      document.querySelectorAll('img.photo-placeholder').forEach(img=>{
+        if(!img.getAttribute('src')) {
+          img.style.background = 'linear-gradient(135deg,#fff4f7,#ffe8f0)';
+          img.style.display = 'block';
+        }
+      });
+    }
+    ensurePlaceholders();
+
+    // Trocar uma foto individual
+    document.querySelectorAll('.btnTrocarUma').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const id = btn.getAttribute('data-target');
+        const url = prompt('Cole o URL da sua foto real:');
+        if(url){
+          const el = document.getElementById(id);
+          el.src = url.trim();
+          el.style.background = 'none';
+        }
+      });
+    });
+
+    // Trocar todas as fotos de uma vez
+    document.getElementById('btnTrocarTodas').addEventListener('click', ()=>{
+      const urls = {
+        imgHero: prompt('URL para a foto do bolo em destaque:') || '',
+        imgSobre: prompt('URL para a foto da confeiteira/ateliê:') || '',
+        imgBoloSimples: prompt('URL para a foto dos bolos simples:') || '',
+        imgBoloAndares: prompt('URL para a foto dos bolos de andares:') || '',
+        imgRecheios: prompt('URL para a foto dos recheios/extras:') || '',
+        imgTortas: prompt('URL para a foto das tortas:') || '',
+        dep1: prompt('URL para a foto do depoimento 1:') || '',
+        dep2: prompt('URL para a foto do depoimento 2:') || '',
+        dep3: prompt('URL para a foto do depoimento 3:') || ''
+      };
+      Object.entries(urls).forEach(([id, url])=>{
+        const el = document.getElementById(id);
+        if(el && url){
+          el.src = url.trim();
+          el.style.background = 'none';
+        }
+      });
+    });
+  </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97135b5bd6186d7c',t:'MTc1NTU0MDUxMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
