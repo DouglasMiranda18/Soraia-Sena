@@ -1,114 +1,95 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Soraia Sena Confeitaria Artesanal</title>
-  <meta name="description" content="Doces artesanais que encantam no sabor e no olhar. Bolos, tortas e kits festa feitos com carinho." />
-  <!-- Tailwind CSS -->
+  <title>Soraia Sena Confeitaria Artesanal — Balcão & Encomendas</title>
+  <meta name="description" content="Cardápio do Balcão com estoque em tempo real e Cardápio de Encomendas da Soraia Sena Confeitaria Artesanal." />
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
   <style>
-    :root{
-      --rosa:#ec5a89;
-      --choc:#4b2e2e;
-      --dourado:#d4af37;
-      --branco:#ffffff;
-      --rosa-claro:#ffeaf1;
-      --creme:#fff8f0;
-    }
-    html{ scroll-behavior: smooth; }
-    .font-script{ font-family:"Great Vibes", cursive; }
-    .font-serifa{ font-family:"Playfair Display", serif; }
-    .font-body{ font-family:"Poppins", sans-serif; }
-    /* Delicado brilho dourado */
-    .gold-gradient{
-      background: linear-gradient(90deg,#c9a634, #d4af37, #e9cf79);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    /* Molduras suaves para imagens demo */
-    .demo-frame{
-      background: linear-gradient(135deg, #fff, #fff) padding-box,
-                  linear-gradient(135deg, rgba(212,175,55,.35), rgba(236,90,137,.35)) border-box;
-      border: 2px solid transparent;
-      border-radius: 16px;
-      position: relative;
-      overflow: hidden;
-    }
-    .photo-placeholder{
-      background: linear-gradient(135deg, #fff4f7, #ffe8f0);
-      color: #4b2e2ecc;
-    }
-    .chip{
-      display:inline-flex;align-items:center;gap:.5rem;
-      background:#fff; color:#4b2e2e; border:1px solid #f3e6ea; border-radius:999px; padding:.35rem .75rem;
-    }
-    /* Botão flutuante WhatsApp */
-    .whats-fab{
-      position: fixed; right: 18px; bottom: 18px; z-index: 60;
-      background: #25D366; color: #fff; border-radius: 999px;
-      box-shadow: 0 12px 24px rgba(37,211,102,.35);
-      transition: transform .18s ease, box-shadow .18s ease;
-    }
-    .whats-fab:hover{ transform: translateY(-2px); box-shadow: 0 16px 28px rgba(37,211,102,.45); }
-    /* Seções com fundo aconchegante */
-    .soft-section{ background: radial-gradient(1200px 600px at 10% 0%, #fff7fb 0, #fff 45%), radial-gradient(900px 500px at 90% 20%, #fff3f7 0, #fff 60%); }
-    .soft-rose{ background: linear-gradient(180deg,#fff8fa 0,#fff 100%); }
-    /* Pequenas estrelas douradas */
-    .sparkle:after{
-      content:"✦"; position:absolute; right:12px; top:10px; color:#d4af37a6; font-size:14px;
-    }
+    :root{ --rosa:#ec5a89; --choc:#4b2e2e; --dourado:#d4af37; }
+    html{ scroll-behavior:smooth; }
+    .font-script{ font-family:"Great Vibes",cursive; }
+    .font-serifa{ font-family:"Playfair Display",serif; }
+    .font-body{ font-family:"Poppins",sans-serif; }
+    .chip{ display:inline-flex;align-items:center;gap:.5rem;background:#fff;color:#4b2e2e;border:1px solid #f3e6ea;border-radius:999px;padding:.4rem .9rem; }
+    .demo-frame{ background:linear-gradient(135deg,#fff,#fff) padding-box,linear-gradient(135deg,rgba(212,175,55,.35),rgba(236,90,137,.35)) border-box; border:2px solid transparent;border-radius:16px; }
+    .whats-fab{ position:fixed;right:18px;bottom:18px;z-index:60;background:#25D366;color:#fff;border-radius:999px;box-shadow:0 12px 24px rgba(37,211,102,.35); }
+    .badge{ display:inline-flex; align-items:center; gap:.35rem; padding:.2rem .55rem; border-radius:999px; font-size:12px; }
+    .cart-fab{ position:fixed; right:18px; bottom:18px; z-index:60; background: var(--rosa); color:#fff; border-radius:999px; box-shadow:0 12px 24px rgba(236,90,137,.35); }
   </style>
 </head>
-<body class="font-body text-[17px] leading-relaxed text-[#4b2e2e] bg-[#fff1f6]">
-
-  <!-- Aviso de imagens demo + ação rápida -->
-  <div class="w-full bg-[#fff1f6] border-b border-[#f7dce6] text-[#4b2e2e]">
-    <div class="max-w-7xl mx-auto px-6 py-3 flex flex-col md:flex-row items-center justify-between gap-3">
-      <p class="text-sm md:text-base">Imagens marcadas como “Demo”. Troque pelas suas fotos reais quando quiser.</p>
-      <div class="flex items-center gap-2">
-        <button id="btnTrocarTodas" class="px-4 py-2 rounded-full bg-[color:var(--rosa)] text-white hover:opacity-95">Trocar todas as fotos</button>
-        <a href="#contato" class="px-4 py-2 rounded-full border border-[#ec5a89] text-[#ec5a89] hover:bg-[#ffeaf1]">Falar no WhatsApp</a>
-      </div>
-    </div>
-  </div>
+<body class="font-body text-[17px] leading-relaxed text-[color:var(--choc)] bg-[#fff1f6]">
 
   <!-- Header -->
   <header class="bg-white/95 backdrop-blur sticky top-0 z-50 border-b border-[#f5e9ed]">
     <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
       <div class="flex items-center gap-3">
-        <div class="h-10 w-10 rounded-full" style="background: radial-gradient(circle at 30% 30%, #ffd7e3, #ec5a89);"></div>
+        <img id="logoTopo" src="https://via.placeholder.com/40x40.png?text=Logo" alt="Logo Soraia Sena" class="h-10 w-10 rounded-full object-cover"/>
         <div>
           <div class="font-script text-2xl leading-none text-[color:var(--choc)]">Soraia Sena</div>
           <div class="uppercase tracking-widest text-xs text-[#a07676]">Confeitaria Artesanal</div>
         </div>
       </div>
+      <!-- Desktop nav -->
       <nav class="hidden md:flex items-center gap-6 text-[15px]">
-        <a href="#catalogo" class="hover:text-[color:var(--rosa)]">Catálogo</a>
+        <a href="#balcao" class="hover:text-[color:var(--rosa)]">Balcão</a>
+        <a href="#encomendas" class="hover:text-[color:var(--rosa)]">Encomendas</a>
         <a href="#sobre" class="hover:text-[color:var(--rosa)]">Sobre</a>
         <a href="#depoimentos" class="hover:text-[color:var(--rosa)]">Depoimentos</a>
         <a href="#contato" class="hover:text-[color:var(--rosa)]">Contato</a>
-        <a href="#catalogo" class="ml-1 px-4 py-2 rounded-full bg-[color:var(--rosa)] text-white hover:opacity-95">Ver Catálogo</a>
+        <button class="relative ml-1 px-3 py-2 rounded-full border border-[#ec5a89] text-[color:var(--rosa)] hover:bg-[#ffeaf1] flex items-center gap-2" aria-label="Abrir carrinho" id="btnCarrinhoTopo">
+          <span id="iconCarrinho" aria-hidden="true" class="relative inline-flex items-center justify-center w-9 h-9 rounded-full bg-[color:var(--rosa)] text-white">
+            <!-- Ícone clean do carrinho -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 6h15l-1.5 9H8.5L7 3H2"/>
+              <circle cx="9" cy="21" r="1.5"/>
+              <circle cx="18" cy="21" r="1.5"/>
+            </svg>
+            <span id="badgeQtd" class="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 rounded-full bg-white text-[color:var(--rosa)] text-[10px] font-semibold flex items-center justify-center shadow">0</span>
+          </span>
+        </button>
+        <button id="btnAdmin" class="ml-1 px-4 py-2 rounded-full bg-[color:var(--rosa)] text-white hover:opacity-95">Admin</button>
       </nav>
+      <!-- Mobile actions -->
+      <div class="md:hidden flex items-center gap-2">
+        <button id="btnMobile" aria-label="Abrir menu" class="p-2 rounded-lg border border-[#ec5a89] text-[color:var(--rosa)] hover:bg-[#ffeaf1]">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </div>
     </div>
   </header>
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="md:hidden hidden bg-white/95 backdrop-blur border-b border-[#f5e9ed]">
+    <div class="max-w-7xl mx-auto px-6 py-4 grid gap-3">
+      <a href="#balcao" class="mobile-link block py-2 text-[color:var(--choc)] hover:text-[color:var(--rosa)]">Balcão</a>
+      <a href="#encomendas" class="mobile-link block py-2 text-[color:var(--choc)] hover:text-[color:var(--rosa)]">Encomendas</a>
+      <a href="#sobre" class="mobile-link block py-2 text-[color:var(--choc)] hover:text-[color:var(--rosa)]">Sobre</a>
+      <a href="#depoimentos" class="mobile-link block py-2 text-[color:var(--choc)] hover:text-[color:var(--rosa)]">Depoimentos</a>
+      <a href="#contato" class="mobile-link block py-2 text-[color:var(--choc)] hover:text-[color:var(--rosa)]">Contato</a>
+      <div class="flex items-center gap-3 pt-2">
+        <button id="btnCarrinhoMobile" class="flex-1 px-4 py-2 rounded-full border border-[#ec5a89] text-[color:var(--rosa)] hover:bg-[#ffeaf1]">Carrinho</button>
+        <button id="btnAdminMobile" class="flex-1 px-4 py-2 rounded-full bg-[color:var(--rosa)] text-white hover:opacity-95">Admin</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Hero -->
-  <section class="soft-section">
+  <section class="bg-[radial-gradient(1200px_600px_at_10%_0%,#fff7fb_0,#fff_45%),radial-gradient(900px_500px_at_90%_20%,#fff3f7_0,#fff_60%)]">
     <div class="max-w-7xl mx-auto px-6 py-14 md:py-20 grid md:grid-cols-2 gap-10 items-center">
       <div>
         <h1 class="text-4xl md:text-5xl font-serifa text-[color:var(--choc)] leading-tight">
-          <span class="font-script text-5xl md:text-6xl text-[color:var(--rosa)]">Doces artesanais</span><br/>
-          que encantam no sabor e no olhar
+          <span class="font-script text-5xl md:text-6xl text-[color:var(--rosa)]">Doces artesanais</span><br/>que encantam no sabor e no olhar
         </h1>
-        <p class="mt-4 text-[#6a5050]">Bolos, tortas e kits festa feitos à mão, com ingredientes selecionados e acabamento impecável.</p>
+        <p class="mt-4 text-[#6a5050]">Escolha itens do Balcão (estoque ao vivo) ou personalize pelas Encomendas. Envie seu pedido no WhatsApp.</p>
         <div class="mt-6 flex items-center gap-3">
-          <a href="#catalogo" class="px-6 py-3 rounded-full bg-[color:var(--rosa)] text-white hover:opacity-95">Ver Catálogo</a>
-          <a href="#sobre" class="px-6 py-3 rounded-full border border-[#ec5a89] text-[color:var(--rosa)] hover:bg-[#ffeaf1]">Conheça a história</a>
+          <a href="#balcao" class="px-6 py-3 rounded-full bg-[color:var(--rosa)] text-white hover:opacity-95">Balcão</a>
+          <a href="#encomendas" class="px-6 py-3 rounded-full border border-[#ec5a89] text-[color:var(--rosa)] hover:bg-[#ffeaf1]">Encomendas</a>
         </div>
         <div class="mt-6 flex items-center gap-2 text-sm text-[#a07676]">
           <span class="chip">💳 Aceitamos cartões</span>
@@ -117,219 +98,197 @@
         </div>
       </div>
       <div class="demo-frame p-2">
-        <div class="relative rounded-xl overflow-hidden">
-          <img id="imgHero" alt="Bolo de vitrine" class="w-full h-[360px] md:h-[460px] object-cover" src="https://images.unsplash.com/photo-1605470760440-1b62cc9ee1ad?q=80&w=1200&auto=format&fit=crop" />
-          <div class="absolute inset-0 flex items-end">
-            <div class="w-full p-4 flex justify-between items-center">
-              <span class="text-[#4b2e2e] bg-white/80 backdrop-blur rounded-full px-4 py-2 text-sm">Foto Demo • Troque pela sua</span>
-              <button data-target="imgHero" class="btnTrocarUma px-3 py-2 rounded-full bg-white/85 hover:bg-white text-[color:var(--rosa)] sparkle">Trocar foto</button>
-            </div>
-          </div>
-        </div>
+        <img alt="Balcão da confeitaria" class="w-full h-[360px] md:h-[460px] object-cover rounded-xl" src="https://images.unsplash.com/photo-1555500058-c63f39c4c83d?q=80&w=1200&auto=format&fit=crop" />
       </div>
     </div>
   </section>
 
-  <!-- Sobre -->
-  <section id="sobre" class="soft-rose">
-    <div class="max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-10 items-center">
-      <div class="order-2 md:order-1">
-        <h2 class="text-3xl md:text-4xl font-serifa text-[color:var(--choc)]">Quem somos</h2>
-        <div class="mt-2 h-1 w-24 rounded-full" style="background:linear-gradient(90deg,#d4af37,#ec5a89);"></div>
-        <p class="mt-5 text-[#6a5050]">
-          A Soraia Sena Confeitaria Artesanal nasceu do amor por celebrar a vida em cada detalhe. Produzimos doces finos e bolos com técnicas artesanais, ingredientes selecionados e um toque de elegância que traduz carinho em forma de sabor.
-        </p>
-        <p class="mt-3 text-[#6a5050]">
-          Nossa proposta é unir delicadeza, feminilidade e sofisticação em cada pedido, do simples ao luxo, sempre com atendimento próximo e personalizado.
-        </p>
-      </div>
-      <div class="order-1 md:order-2 demo-frame p-2">
-        <div class="relative rounded-xl overflow-hidden">
-          <img id="imgSobre" alt="Confeiteira no ateliê" class="w-full h-[340px] object-cover" src="https://images.unsplash.com/photo-1560089175-2ec1db54f0b0?q=80&w=1200&auto=format&fit=crop" />
-          <div class="absolute inset-0 flex items-end">
-            <div class="w-full p-4 flex justify-end">
-              <button data-target="imgSobre" class="btnTrocarUma px-3 py-2 rounded-full bg-white/85 hover:bg-white text-[color:var(--rosa)] sparkle">Trocar foto</button>
-            </div>
-          </div>
+  <!-- Cardápio do Balcão (agora 100% Firebase) -->
+  <section id="balcao" class="bg-[linear-gradient(180deg,#fff8fa_0,#fff_100%)]">
+    <div class="max-w-7xl mx-auto px-6 py-16">
+      <div class="flex items-start justify-between gap-6 flex-wrap">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-serifa text-[color:var(--choc)]">Cardápio do Balcão</h2>
+          <div class="mt-2 h-1 w-40 rounded-full" style="background:linear-gradient(90deg,#d4af37,#ec5a89);"></div>
+          <p class="mt-3 text-[#6a5050]">Itens prontos para levar. Estoque em tempo real, atualiza e esgota.</p>
+          
         </div>
+        <div class="flex items-center gap-2"></div>
       </div>
+
+      <div class="mt-8 flex gap-3 flex-wrap" id="filtrosBalcao">
+        <button data-filtro="todos" class="filtro chip bg-[color:var(--rosa)] text-white">Todos</button>
+        <button data-filtro="Fatias" class="filtro chip hover:bg-[#fff]">Fatias</button>
+        <button data-filtro="Doces" class="filtro chip hover:bg-[#fff]">Doces</button>
+        <button data-filtro="Salgados" class="filtro chip hover:bg-[#fff]">Salgados</button>
+        <button data-filtro="Bebidas" class="filtro chip hover:bg-[#fff]">Bebidas</button>
+        <button data-filtro="Outros" class="filtro chip hover:bg-[#fff]">Outros</button>
+      </div>
+
+      <div id="gridBalcao" class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
     </div>
   </section>
 
-  <!-- Catálogo -->
-  <section id="catalogo" class="bg-white">
+  <!-- Cardápio de Encomendas (mantido) -->
+  <section id="encomendas" class="bg-white">
     <div class="max-w-7xl mx-auto px-6 py-16">
       <div class="flex items-end justify-between gap-6 flex-wrap">
         <div>
-          <h2 class="text-3xl md:text-4xl font-serifa text-[color:var(--choc)]">Catálogo</h2>
+          <h2 class="text-3xl md:text-4xl font-serifa text-[color:var(--choc)]">Cardápio de Encomendas</h2>
           <div class="mt-2 h-1 w-28 rounded-full" style="background:linear-gradient(90deg,#d4af37,#ec5a89);"></div>
+          <p class="mt-3 text-[#6a5050]">Clique em “Adicionar” e personalize seu pedido.</p>
         </div>
         <div class="flex items-center gap-2 text-sm text-[#6a5050]">
           <span class="chip">🍰 Bolos</span>
+          <span class="chip">🎂 2 andares</span>
           <span class="chip">🥧 Tortas</span>
           <span class="chip">🎉 Kits Festa</span>
         </div>
       </div>
 
-      <!-- Cards de categorias -->
       <div class="mt-10 grid lg:grid-cols-3 gap-8">
-        <!-- Bolos Simples -->
-        <div class="border border-[#f2e6ea] rounded-2xl p-6 hover:shadow-md transition bg-[#fffafa]">
+        <!-- Bolo -->
+        <div class="border border-[#f2e6ea] rounded-2xl p-6 bg-[#fffafa]">
           <div class="flex items-center justify-between">
-            <h3 class="font-serifa text-2xl text-[color:var(--choc)]">Bolos Simples</h3>
-            <span class="gold-gradient font-semibold">Clássicos</span>
+            <h3 class="font-serifa text-2xl">Bolo</h3>
+            <span class="text-sm text-[#6a5050]">a partir de <b>R$100,00</b></span>
           </div>
-          <ul class="mt-4 space-y-2 text-[#6a5050]">
-            <li>1kg e 750g — <b class="text-[color:var(--choc)]">R$100,00</b></li>
-            <li>2kg e 500g — <b class="text-[color:var(--choc)]">R$170,00</b></li>
-            <li>3kg — <b class="text-[color:var(--choc)]">R$210,00</b></li>
-          </ul>
+          <p class="mt-2 text-[#6a5050] text-sm">Escolha o peso e o recheio no próximo passo.</p>
           <div class="mt-5 demo-frame p-2">
-            <div class="relative rounded-xl overflow-hidden">
-              <img id="imgBoloSimples" alt="Bolo simples decorado" class="w-full h-44 object-cover" src="https://images.unsplash.com/photo-1495147466023-ac5c588e2e94?q=80&w=1200&auto=format&fit=crop" />
-              <button data-target="imgBoloSimples" class="btnTrocarUma absolute bottom-3 right-3 px-3 py-1.5 rounded-full bg-white/85 text-[color:var(--rosa)]">Trocar foto</button>
-            </div>
+            <img alt="Bolo simples decorado" class="w-full h-44 object-cover rounded-xl" src="https://images.unsplash.com/photo-1495147466023-ac5c588e2e94?q=80&w=1200&auto=format&fit=crop" />
           </div>
+          <button class="mt-5 chip hover:bg-[color:var(--rosa)] hover:text-white w-full justify-center abrir-opcoes"
+                  data-title="Bolo"
+                  data-categoria="bolo"
+                  data-opcoes='[
+                    {"label":"1,75kg","preco":100},
+                    {"label":"2,5kg","preco":170},
+                    {"label":"3kg","preco":210},
+                    {"label":"4kg","preco":290},
+                    {"label":"5kg","preco":350},
+                    {"label":"6kg","preco":420},
+                    {"label":"7kg","preco":490},
+                    {"label":"8kg","preco":560},
+                    {"label":"10kg","preco":720}
+                  ]'
+                  data-temrecheio="true">Adicionar</button>
         </div>
 
-        <!-- Bolos de 2 andares -->
-        <div class="border border-[#f2e6ea] rounded-2xl p-6 hover:shadow-md transition bg-[#fffafa]">
+        <!-- Bolo de 2 andares -->
+        <div class="border border-[#f2e6ea] rounded-2xl p-6 bg-[#fffafa]">
           <div class="flex items-center justify-between">
-            <h3 class="font-serifa text-2xl text-[color:var(--choc)]">Bolos de 2 andares</h3>
-            <span class="gold-gradient font-semibold">Celebrações</span>
+            <h3 class="font-serifa text-2xl">Bolo de 2 andares</h3>
+            <span class="text-sm text-[#6a5050]">a partir de <b>R$290,00</b></span>
           </div>
-          <ul class="mt-4 space-y-2 text-[#6a5050]">
-            <li>4kg — <b class="text-[color:var(--choc)]">R$290,00</b></li>
-            <li>5kg — <b class="text-[color:var(--choc)]">R$350,00</b></li>
-            <li>6kg — <b class="text-[color:var(--choc)]">R$420,00</b></li>
-            <li>7kg — <b class="text-[color:var(--choc)]">R$490,00</b></li>
-            <li>8kg — <b class="text-[color:var(--choc)]">R$560,00</b></li>
-            <li>10kg — <b class="text-[color:var(--choc)]">R$720,00</b></li>
-            <li>6kg (3 andares) — <b class="text-[color:var(--choc)]">R$720,00</b></li>
-          </ul>
+          <p class="mt-2 text-[#6a5050] text-sm">Escolha o peso e o recheio no próximo passo.</p>
           <div class="mt-5 demo-frame p-2">
-            <div class="relative rounded-xl overflow-hidden">
-              <img id="imgBoloAndares" alt="Bolo de andares" class="w-full h-44 object-cover" src="https://images.unsplash.com/photo-1589923188900-85dae523342b?q=80&w=1200&auto=format&fit=crop" />
-              <button data-target="imgBoloAndares" class="btnTrocarUma absolute bottom-3 right-3 px-3 py-1.5 rounded-full bg-white/85 text-[color:var(--rosa)]">Trocar foto</button>
-            </div>
+            <img alt="Bolo de 2 andares" class="w-full h-44 object-cover rounded-xl" src="https://images.unsplash.com/photo-1589923188900-85dae523342b?q=80&w=1200&auto=format&fit=crop" />
           </div>
+          <button class="mt-5 chip hover:bg-[color:var(--rosa)] hover:text-white w-full justify-center abrir-opcoes"
+                  data-title="Bolo de 2 andares"
+                  data-categoria="bolo"
+                  data-opcoes='[
+                    {"label":"4kg","preco":290},
+                    {"label":"5kg","preco":350},
+                    {"label":"6kg","preco":420},
+                    {"label":"7kg","preco":490},
+                    {"label":"8kg","preco":560},
+                    {"label":"10kg","preco":720},
+                    {"label":"6kg (3 andares)","preco":720}
+                  ]'
+                  data-temrecheio="true">Adicionar</button>
         </div>
 
-        <!-- Recheios e Extras -->
-        <div class="border border-[#f2e6ea] rounded-2xl p-6 hover:shadow-md transition bg-[#fffafa]">
-          <h3 class="font-serifa text-2xl text-[color:var(--choc)]">Recheios Disponíveis</h3>
-          <p class="mt-3 text-[#6a5050]">Chocolate bem casado, Prestígio, Sonho de Valsa, Maracujá, Ninho, Chocolate branco, 3 Amores.</p>
-          <h4 class="mt-5 font-medium text-[color:var(--choc)]">Extras</h4>
-          <p class="text-[#6a5050]">Morango, Nutella, Doce de Leite.</p>
+        <!-- Tortas -->
+        <div class="border border-[#f2e6ea] rounded-2xl p-6 bg-[#fffafa]">
+          <div class="flex items-center justify-between">
+            <h3 class="font-serifa text-2xl">Tortas</h3>
+            <span class="text-sm text-[#6a5050]">a partir de <b>R$65/kg</b></span>
+          </div>
+          <p class="mt-2 text-[#6a5050] text-sm">Escolha o peso e o sabor no próximo passo.</p>
           <div class="mt-5 demo-frame p-2">
-            <div class="relative rounded-xl overflow-hidden">
-              <img id="imgRecheios" alt="Recheios e camadas" class="w-full h-44 object-cover" src="https://images.unsplash.com/photo-1508779018996-4f4fd3f100fc?q=80&w=1200&auto=format&fit=crop" />
-              <button data-target="imgRecheios" class="btnTrocarUma absolute bottom-3 right-3 px-3 py-1.5 rounded-full bg-white/85 text-[color:var(--rosa)]">Trocar foto</button>
-            </div>
+            <img alt="Tortas variadas" class="w-full h-44 object-cover rounded-xl" src="https://images.unsplash.com/photo-1542827636-70dbbb2fb221?q=80&w=1200&auto=format&fit=crop" />
           </div>
+          <button class="mt-5 chip hover:bg-[color:var(--rosa)] hover:text-white w-full justify-center abrir-opcoes"
+                  data-title="Torta"
+                  data-categoria="torta"
+                  data-opcoes='[
+                    {"label":"1,5kg","preco":97},
+                    {"label":"2kg","preco":130},
+                    {"label":"2,5kg","preco":162}
+                  ]'
+                  data-temsabor="true">Adicionar</button>
         </div>
       </div>
 
-      <!-- Tortas -->
-      <div class="mt-12 grid md:grid-cols-2 gap-8">
+      <!-- Kits Festa (Encomendas) -->
+      <div class="mt-10 grid lg:grid-cols-2 gap-8">
         <div class="border border-[#f2e6ea] rounded-2xl p-6 bg-[#fffafa]">
-          <h3 class="font-serifa text-2xl text-[color:var(--choc)]">Tortas</h3>
-          <p class="mt-2 text-[#6a5050]">A partir de <b>R$65/kg</b> – mínimo 1,5kg</p>
-          <p class="mt-3 text-[#6a5050]">
-            Sabores: Chocolate, Bem Casado, Prestígio, Sonho de Valsa, KitKat, Morango, Abacaxi, Maracujá, Limão, Floresta Negra, Churros, 3 Amores, Chocolate Branco, Crocante, Doce de Leite Crocante, entre outros.
-          </p>
-        </div>
-        <div class="demo-frame p-2">
-          <div class="relative rounded-xl overflow-hidden">
-            <img id="imgTortas" alt="Tortas variadas" class="w-full h-64 object-cover" src="https://images.unsplash.com/photo-1542827636-70dbbb2fb221?q=80&w=1200&auto=format&fit=crop" />
-            <button data-target="imgTortas" class="btnTrocarUma absolute bottom-3 right-3 px-3 py-1.5 rounded-full bg-white/85 text-[color:var(--rosa)]">Trocar foto</button>
+          <div class="flex items-center justify-between">
+            <h3 class="font-serifa text-2xl">Kits Festa</h3>
+            <span class="text-sm text-[#6a5050]">várias opções</span>
           </div>
+          <p class="mt-2 text-[#6a5050] text-sm">Cada opção mostra o que está incluído.</p>
+          <div class="mt-5 demo-frame p-2">
+            <img alt="Kits festa" class="w-full h-44 object-cover rounded-xl" src="https://images.unsplash.com/photo-1612208695882-9b67f0fa23a1?q=80&w=1200&auto=format&fit=crop" />
+          </div>
+          <button class="mt-5 chip hover:bg-[color:var(--rosa)] hover:text-white w-full justify-center abrir-opcoes"
+                  data-title="Kit Festa"
+                  data-categoria="kit"
+                  data-opcoes='[
+                    {"label":"Kit 10 Pessoas — R$100,00","preco":100,"desc":"1 kg de torta • 25 doces • 25 salgados"},
+                    {"label":"Kit 15 Pessoas — R$150,00","preco":150,"desc":"1,5 kg de torta • 30 doces • 45 salgados"},
+                    {"label":"Kit 20 Pessoas — R$210,00","preco":210,"desc":"2 kg de torta • 60 doces • 70 salgados"},
+                    {"label":"Kit 30 Pessoas — R$260,00","preco":260,"desc":"3 kg de torta • 90 doces • 100 salgados"},
+                    {"label":"Kit 40 Pessoas — R$335,00","preco":335,"desc":"4 kg de torta • 120 doces • 120 salgados"},
+                    {"label":"Kit 45 Pessoas — R$420,00","preco":420,"desc":"4,5 kg de torta • 135 doces • 180 salgados"},
+                    {"label":"Kit 50 Pessoas — R$530,00","preco":530,"desc":"5 kg de torta • 180 doces • 200 salgados"},
+                    {"label":"Kit 60 Pessoas — R$580,00","preco":580,"desc":"6 kg de torta • 240 doces • 200 salgados"},
+                    {"label":"Kit 70 Pessoas — R$635,00","preco":635,"desc":"7 kg de torta • 220 doces • 300 salgados"}
+                  ]'>Adicionar</button>
         </div>
-      </div>
 
-      <!-- Kits Festa -->
-      <div class="mt-12 grid lg:grid-cols-2 gap-8">
         <div class="border border-[#f2e6ea] rounded-2xl p-6 bg-[#fffafa]">
-          <h3 class="font-serifa text-2xl text-[color:var(--choc)]">Kits Festa – por Pessoas</h3>
-          <ul class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-y-2 text-[#6a5050]">
-            <li>10 pessoas — <b>R$100,00</b> <span class="text-xs block text-[#8f6f6f]">1kg de torta, 25 doces, 25 salgados</span></li>
-            <li>15 pessoas — <b>R$150,00</b></li>
-            <li>20 pessoas — <b>R$210,00</b></li>
-            <li>30 pessoas — <b>R$260,00</b></li>
-            <li>40 pessoas — <b>R$335,00</b></li>
-            <li>45 pessoas — <b>R$420,00</b></li>
-            <li>50 pessoas — <b>R$530,00</b></li>
-            <li>60 pessoas — <b>R$580,00</b></li>
-            <li>70 pessoas — <b>R$635,00</b></li>
-          </ul>
-        </div>
-        <div class="border border-[#f2e6ea] rounded-2xl p-6 bg-[#fffafa]">
-          <h3 class="font-serifa text-2xl text-[color:var(--choc)]">Kits Festa Luxo</h3>
-          <ul class="mt-4 space-y-2 text-[#6a5050]">
-            <li>Kit 1 — <b>R$260,00</b> <span class="text-xs block text-[#8f6f6f]">2kg chantininho, 50 doces, 70 salgados</span></li>
-            <li>Kit 2 — <b>R$830,00</b> <span class="text-xs block text-[#8f6f6f]">5kg chantininho, 200 doces, 300 salgados, 10 cupcakes, 10 trufas, 10 pirulitos</span></li>
-            <li>Kit 3 — <b>R$950,00</b> <span class="text-xs block text-[#8f6f6f]">7kg chantininho, 200 doces, 300 salgados, 10 cupcakes, 10 trufas, 10 pirulitos</span></li>
-            <li>Kit 4 — <b>R$1.000,00</b> <span class="text-xs block text-[#8f6f6f]">5kg chantininho, 200 doces, 200 salgados, 10 cupcakes, 10 trufas, 10 pirulitos, 40 mini pizza, 40 cachorrinhos, 8 litros refrigerante</span></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="mt-8 grid lg:grid-cols-3 gap-8">
-        <div class="border border-[#f2e6ea] rounded-2xl p-6 bg-[#fffafa]">
-          <h3 class="font-serifa text-xl text-[color:var(--choc)]">Kit Festa Personalizado</h3>
-          <p class="mt-2 text-[#6a5050]">A partir de <b>R$220,00</b></p>
-          <p class="text-[#6a5050] text-sm">Inclui: 1,5kg de bolo, 25 docinhos, 25 salgados, 5 cupcakes, 5 bolos no palito, 5 trufas.</p>
-        </div>
-        <div class="border border-[#f2e6ea] rounded-2xl p-6 bg-[#fffafa]">
-          <h3 class="font-serifa text-xl text-[color:var(--choc)]">Kit Festa Simples</h3>
-          <p class="mt-2 text-[#6a5050]"><b>R$80,00</b></p>
-          <p class="text-[#6a5050] text-sm">Topo a partir de R$12,00 • Topo 3D sob consulta</p>
-        </div>
-        <div class="border border-[#f2e6ea] rounded-2xl p-6 bg-[#fffafa]">
-          <h3 class="font-serifa text-xl text-[color:var(--choc)]">Observações</h3>
-          <p class="mt-2 text-[#6a5050] text-sm">Glitter, pintura e sabores gourmet cobrados à parte.</p>
+          <div class="flex items-center justify-between">
+            <h3 class="font-serifa text-2xl">Kits Festa Luxo</h3>
+            <span class="text-sm text-[#6a5050]">várias opções</span>
+          </div>
+          <p class="mt-2 text-[#6a5050] text-sm">Opções completas com doces e salgados.</p>
+          <div class="mt-5 demo-frame p-2">
+            <img alt="Kits luxo" class="w-full h-44 object-cover rounded-xl" src="https://images.unsplash.com/photo-1541976076758-347942db1976?q=80&w=1200&auto=format&fit=crop" />
+          </div>
+          <button class="mt-5 chip hover:bg-[color:var(--rosa)] hover:text-white w-full justify-center abrir-opcoes"
+                  data-title="Kit Festa Luxo"
+                  data-categoria="kit"
+                  data-opcoes='[
+                    {"label":"Kit 1 — R$260,00","preco":260,"desc":"2kg chantininho, 50 doces, 70 salgados"},
+                    {"label":"Kit 2 — R$830,00","preco":830,"desc":"5kg chantininho, 200 doces, 300 salgados, 10 cupcakes, 10 trufas, 10 pirulitos"},
+                    {"label":"Kit 3 — R$950,00","preco":950,"desc":"7kg chantininho, 200 doces, 300 salgados, 10 cupcakes, 10 trufas, 10 pirulitos"},
+                    {"label":"Kit 4 — R$1.000,00","preco":1000,"desc":"5kg chantininho, 200 doces, 200 salgados, 10 cupcakes, 10 trufas, 10 pirulitos, 40 mini pizza, 40 cachorrinhos, 8 litros refrigerante"}
+                  ]'>Adicionar</button>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Depoimentos -->
-  <section id="depoimentos" class="soft-rose">
+  <section id="depoimentos" class="bg-[linear-gradient(180deg,#fff8fa_0,#fff_100%)]">
     <div class="max-w-7xl mx-auto px-6 py-16">
-      <h2 class="text-3xl md:text-4xl font-serifa text-[color:var(--choc)]">Depoimentos de Clientes</h2>
+      <h2 class="text-3xl md:text-4xl font-serifa">Depoimentos de Clientes</h2>
       <div class="mt-2 h-1 w-32 rounded-full" style="background:linear-gradient(90deg,#d4af37,#ec5a89);"></div>
-
       <div class="mt-8 grid md:grid-cols-3 gap-8">
-        <!-- Depoimento 1 -->
         <div class="border border-[#f2e6ea] rounded-2xl p-5 bg-white">
-          <div class="demo-frame p-2">
-            <div class="relative rounded-xl overflow-hidden">
-              <img id="dep1" alt="Bolo entregue ao cliente" class="w-full h-40 object-cover" src="https://images.unsplash.com/photo-1627202518147-1c78586e04b3?q=80&w=1200&auto=format&fit=crop" />
-              <button data-target="dep1" class="btnTrocarUma absolute bottom-3 right-3 px-3 py-1.5 rounded-full bg-white/85 text-[color:var(--rosa)]">Trocar foto</button>
-            </div>
-          </div>
+          <div class="demo-frame p-2"><img alt="Bolo entregue ao cliente" class="w-full h-40 object-cover rounded-xl" src="https://images.unsplash.com/photo-1627202518147-1c78586e04b3?q=80&w=1200&auto=format&fit=crop" /></div>
           <p class="mt-4 text-[#6a5050]">“Perfeito! O bolo estava maravilhoso e lindo. Atendimento impecável.”</p>
           <p class="mt-1 text-sm text-[#8f6f6f]">— Ana Paula</p>
         </div>
-        <!-- Depoimento 2 -->
         <div class="border border-[#f2e6ea] rounded-2xl p-5 bg-white">
-          <div class="demo-frame p-2">
-            <div class="relative rounded-xl overflow-hidden">
-              <img id="dep2" alt="Bolo temático" class="w-full h-40 object-cover" src="https://images.unsplash.com/photo-1494346480775-936a1c6a87e2?q=80&w=1200&auto=format&fit=crop" />
-              <button data-target="dep2" class="btnTrocarUma absolute bottom-3 right-3 px-3 py-1.5 rounded-full bg-white/85 text-[color:var(--rosa)]">Trocar foto</button>
-            </div>
-          </div>
+          <div class="demo-frame p-2"><img alt="Bolo temático" class="w-full h-40 object-cover rounded-xl" src="https://images.unsplash.com/photo-1494346480775-936a1c6a87e2?q=80&w=1200&auto=format&fit=crop" /></div>
           <p class="mt-4 text-[#6a5050]">“Entrega no horário e sabor incrível! Fez toda a diferença na festa.”</p>
           <p class="mt-1 text-sm text-[#8f6f6f]">— Rodrigo</p>
         </div>
-        <!-- Depoimento 3 -->
         <div class="border border-[#f2e6ea] rounded-2xl p-5 bg-white">
-          <div class="demo-frame p-2">
-            <div class="relative rounded-xl overflow-hidden">
-              <img id="dep3" alt="Torta decorada" class="w-full h-40 object-cover" src="https://images.unsplash.com/photo-1551024709-8f23befc6cf7?q=80&w=1200&auto=format&fit=crop" />
-              <button data-target="dep3" class="btnTrocarUma absolute bottom-3 right-3 px-3 py-1.5 rounded-full bg-white/85 text-[color:var(--rosa)]">Trocar foto</button>
-            </div>
-          </div>
+          <div class="demo-frame p-2"><img alt="Torta decorada" class="w-full h-40 object-cover rounded-xl" src="https://images.unsplash.com/photo-1551024709-8f23befc6cf7?q=80&w=1200&auto=format&fit=crop" /></div>
           <p class="mt-4 text-[#6a5050]">“A decoração ficou de cinema e o recheio delicioso. Recomendo!”</p>
           <p class="mt-1 text-sm text-[#8f6f6f]">— Juliana</p>
         </div>
@@ -337,31 +296,21 @@
     </div>
   </section>
 
-  <!-- Contato & Localização -->
+  <!-- Contato -->
   <section id="contato" class="bg-white">
     <div class="max-w-7xl mx-auto px-6 py-16 grid lg:grid-cols-2 gap-10 items-start">
       <div>
-        <h2 class="text-3xl md:text-4xl font-serifa text-[color:var(--choc)]">Contato & Localização</h2>
+        <h2 class="text-3xl md:text-4xl font-serifa">Contato & Localização</h2>
         <div class="mt-2 h-1 w-36 rounded-full" style="background:linear-gradient(90deg,#d4af37,#ec5a89);"></div>
-
         <div class="mt-6 space-y-4 text-[#6a5050]">
           <p><a class="text-[color:var(--rosa)] underline text-2xl" href="https://wa.me/55" target="_blank" rel="noopener" aria-label="WhatsApp"><img alt="WhatsApp" src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png" class="inline w-7 h-7 align-middle"/></a></p>
           <p><a class="text-[color:var(--rosa)] underline text-2xl" href="https://instagram.com/soraiia_senna" target="_blank" rel="noopener" aria-label="Instagram"><img alt="Instagram" src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" class="inline w-7 h-7 align-middle"/></a></p>
-          <p class="flex items-start gap-2"><span>📍</span> <span>Av José da Câmara Vieira, prox. à UPA da Vila Sotave.</span></p>
+          <p class="flex items-start gap-2"><span>📍</span><span>Av José da Câmara Vieira, prox. à UPA da Vila Sotave.</span></p>
           <p>Pagamento: Aceita todos os cartões e Pix.</p>
-          <div class="mt-4 flex gap-3">
-            <a href="#catalogo" class="px-5 py-2.5 rounded-full bg-[color:var(--rosa)] text-white hover:opacity-95">Ver Catálogo</a>
-            <a href="https://wa.me/55" target="_blank" rel="noopener" class="px-5 py-2.5 rounded-full border border-[#ec5a89] text-[color:var(--rosa)] hover:bg-[#ffeaf1]">Fazer orçamento</a>
-          </div>
         </div>
       </div>
       <div class="demo-frame p-2">
-        <div class="rounded-xl overflow-hidden">
-          <!-- Mapa incorporado pela busca do endereço -->
-          <iframe title="Mapa - Soraia Sena Confeitaria Artesanal" class="w-full h-[360px]" style="border:0;"
-            loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps?q=Av%20Jos%C3%A9%20da%20C%C3%A2mara%20Vieira%2C%20Vila%20Sotave&output=embed"></iframe>
-        </div>
+        <iframe title="Mapa - Soraia Sena Confeitaria Artesanal" class="w-full h-[360px] rounded-xl" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Av%20Jos%C3%A9%20da%20C%C3%A2mara%20Vieira%2C%20Vila%20Sotave&output=embed"></iframe>
       </div>
     </div>
   </section>
@@ -377,7 +326,8 @@
       <div>
         <h4 class="font-serifa text-lg">Links rápidos</h4>
         <ul class="mt-3 space-y-2 text-[#e9d7d7]">
-          <li><a class="hover:text-white" href="#catalogo">Catálogo</a></li>
+          <li><a class="hover:text-white" href="#balcao">Balcão</a></li>
+          <li><a class="hover:text-white" href="#encomendas">Encomendas</a></li>
           <li><a class="hover:text-white" href="#sobre">Sobre</a></li>
           <li><a class="hover:text-white" href="#contato">Contato</a></li>
         </ul>
@@ -393,65 +343,735 @@
     <div class="border-t border-[#4a2f2f]">
       <div class="max-w-7xl mx-auto px-6 py-4 text-sm text-[#cdb1b1] flex items-center justify-between">
         <span>© <span id="ano"></span> Soraia Sena Confeitaria Artesanal</span>
-        <span class="gold-gradient font-medium">feito com amor</span>
+        <span style="background:linear-gradient(90deg,#c9a634,#d4af37,#e9cf79);-webkit-background-clip:text;background-clip:text;color:transparent">feito com amor</span>
       </div>
     </div>
   </footer>
 
-  <!-- Botão flutuante WhatsApp -->
-  <a href="https://wa.me/55" target="_blank" rel="noopener" aria-label="WhatsApp" class="whats-fab flex items-center justify-center w-14 h-14 p-0">
-    <img alt="WhatsApp" src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png" class="w-7 h-7"/>
-  </a>
+  <!-- Carrinho (modal) -->
+  <div id="modalCarrinho" class="fixed inset-0 bg-black/40 backdrop-blur-sm hidden z-[90]">
+    <div class="relative mx-4 sm:mx-auto sm:w-full sm:max-w-2xl top-24 sm:top-28 rounded-2xl bg-white p-6 shadow-xl">
+      <div class="flex items-center justify-between">
+        <h3 class="font-serifa text-2xl">Seu Pedido</h3>
+        <button class="px-3 py-1.5 rounded-full bg-[#ffeaf1] text-[color:var(--rosa)]" id="fecharCarrinho">Fechar</button>
+      </div>
+      <ul id="listaPedido" class="mt-4 divide-y divide-[#f2e6ea]"></ul>
+      <div class="mt-4 flex items-center justify-between">
+        <span class="text-[#6a5050]">Total</span>
+        <span id="total" class="text-xl font-semibold">R$0,00</span>
+      </div>
+      <div class="mt-6 grid md:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm text-[#6a5050] mb-1">Seu nome</label>
+          <input id="cliNome" class="w-full rounded-lg border border-[#f2e6ea] p-3" placeholder="Digite seu nome" />
+        </div>
+        <div>
+          <label class="block text-sm text-[#6a5050] mb-1">Telefone</label>
+          <input id="cliTel" class="w-full rounded-lg border border-[#f2e6ea] p-3" placeholder="(DDD) 9 9999-9999" />
+        </div>
+        <div>
+          <label class="block text-sm text-[#6a5050] mb-1">Forma de pagamento</label>
+          <select id="cliPagamento" class="w-full rounded-lg border border-[#f2e6ea] p-3">
+            <option value="Pix">Pix</option>
+            <option value="Cartão">Cartão</option>
+            <option value="Dinheiro">Dinheiro</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm text-[#6a5050] mb-1">Observações</label>
+          <input id="cliObs" class="w-full rounded-lg border border-[#f2e6ea] p-3" placeholder="Ex.: Retirar às 15h, ponto de referência..." />
+        </div>
+      </div>
+      <div class="mt-4 flex items-center justify-end gap-2 text-sm">
+        <button id="btnLimpar" class="px-3 py-2 rounded-full border border-[#ec5a89] text-[color:var(--rosa)] hover:bg-[#ffeaf1]">Limpar</button>
+        <button id="btnEnviar" class="px-4 py-2 rounded-full bg-[color:var(--rosa)] text-white hover:opacity-95">Enviar para WhatsApp</button>
+      </div>
+    </div>
+  </div>
 
-  <script>
-    // Atualiza ano no rodapé
-    document.getElementById('ano').textContent = new Date().getFullYear();
+  <!-- Modal Opções (Encomendas) -->
+  <div id="modalOpcoes" class="fixed inset-0 bg-black/40 backdrop-blur-sm hidden z-[80]">
+    <div class="relative mx-4 sm:mx-auto sm:w-full sm:max-w-xl top-24 sm:top-28 rounded-2xl bg-white p-6 shadow-xl">
+      <div class="flex items-center justify-between">
+        <h3 id="tituloModal" class="font-serifa text-2xl">Adicionar</h3>
+        <button class="px-3 py-1.5 rounded-full bg-[#ffeaf1] text-[color:var(--rosa)]" id="fecharOpcoes">Fechar</button>
+      </div>
 
-    // Placeholders agradáveis quando sem imagem
-    function ensurePlaceholders(){
-      document.querySelectorAll('img.photo-placeholder').forEach(img=>{
-        if(!img.getAttribute('src')) {
-          img.style.background = 'linear-gradient(135deg,#fff4f7,#ffe8f0)';
-          img.style.display = 'block';
+      <form id="formOpcoes" class="mt-4 space-y-4">
+        <div>
+          <label class="block text-sm text-[#6a5050] mb-1">Opção</label>
+          <select id="inpOpcao" class="w-full rounded-lg border border-[#f2e6ea] p-3"></select>
+          <div id="descOpcao" class="mt-2 rounded-xl border border-[#f2e6ea] bg-[#fff8fb] text-[#4b2e2e] p-3 text-sm leading-relaxed">
+            <div class="flex items-start gap-2">
+              <span class="text-[color:var(--rosa)]">🎉</span>
+              <div>
+                <div class="text-xs uppercase tracking-wide text-[#a07676] mb-1">O que inclui</div>
+                <span id="descTexto"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="grupoRecheio" class="hidden">
+          <label class="block text-sm text-[#6a5050] mb-1">Recheio</label>
+          <select id="inpRecheio" class="w-full rounded-lg border border-[#f2e6ea] p-3">
+            <option>Chocolate bem casado</option>
+            <option>Prestígio</option>
+            <option>Sonho de Valsa</option>
+            <option>Maracujá</option>
+            <option>Ninho</option>
+            <option>Chocolate branco</option>
+            <option>3 Amores</option>
+          </select>
+        </div>
+
+        <div id="grupoSabor" class="hidden">
+          <label class="block text-sm text-[#6a5050] mb-1">Sabor</label>
+          <select id="inpSabor" class="w-full rounded-lg border border-[#f2e6ea] p-3">
+            <option>Chocolate</option>
+            <option>Bem Casado</option>
+            <option>Prestígio</option>
+            <option>Sonho de Valsa</option>
+            <option>Morango</option>
+            <option>Abacaxi</option>
+            <option>Maracujá</option>
+            <option>Limão</option>
+            <option>Floresta Negra</option>
+            <option>Churros</option>
+            <option>3 Amores</option>
+            <option>Chocolate Branco</option>
+            <option>Crocante</option>
+            <option>Doce de Leite Crocante</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-sm text-[#6a5050] mb-1">Observações</label>
+          <textarea id="inpObs" class="w-full rounded-lg border border-[#f2e6ea] p-3" rows="3" placeholder="Ex.: enviar foto do modelo no WhatsApp, retirar às 15h."></textarea>
+          <p class="text-xs text-[#8f6f6f] mt-1">Dica: envie a foto de referência em anexo no WhatsApp após confirmar o pedido.</p>
+        </div>
+
+        <div class="flex items-center justify-end gap-2">
+          <button type="button" id="cancelarOpcoes" class="px-4 py-2 rounded-full border border-[#ec5a89] text-[color:var(--rosa)] hover:bg-[#ffeaf1]">Cancelar</button>
+          <button type="submit" class="px-5 py-2 rounded-full bg-[color:var(--rosa)] text-white hover:opacity-95">Adicionar ao carrinho</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Admin (Balcão em Firebase) -->
+  <div id="modalAdmin" class="fixed inset-0 bg-black/40 backdrop-blur-sm hidden z-[100]">
+    <div class="relative mx-4 sm:mx-auto sm:w-full sm:max-w-5xl top-16 sm:top-20 rounded-2xl bg-white p-6 shadow-xl">
+      <div class="flex items-center justify-between">
+        <div>
+          <h3 class="font-serifa text-2xl">Painel do Balcão</h3>
+        </div>
+        <div class="flex items-center gap-2">
+          <span id="userInfo" class="hidden text-sm text-[#6a5050]"></span>
+          <button id="btnSair" class="hidden px-3 py-1.5 rounded-full border border-[#ec5a89] text-[color:var(--rosa)] hover:bg-[#ffeaf1]">Sair</button>
+          <button id="fecharAdmin" class="px-3 py-1.5 rounded-full bg-[#ffeaf1] text-[color:var(--rosa)]">Fechar</button>
+        </div>
+      </div>
+
+      <!-- Login -->
+      <div id="boxLogin" class="mt-6">
+        <div class="border border-[#f2e6ea] rounded-2xl p-5 bg-[#fffafa]">
+          <h4 class="font-serifa text-xl">Entrar</h4>
+          <p class="text-sm text-[#6a5050] mt-1">Use e-mail e senha para acessar o painel.</p>
+          <form id="formLogin" class="mt-4 space-y-3">
+            <div>
+              <label class="block text-sm mb-1 text-[#6a5050]">E-mail</label>
+              <input id="lEmail" type="email" class="w-full rounded-lg border border-[#f2e6ea] p-3" placeholder="voce@suaempresa.com" required/>
+            </div>
+            <div>
+              <label class="block text-sm mb-1 text-[#6a5050]">Senha</label>
+              <input id="lSenha" type="password" class="w-full rounded-lg border border-[#f2e6ea] p-3" placeholder="••••••••" required/>
+            </div>
+            <div class="pt-2">
+              <button type="submit" class="w-full px-5 py-2 rounded-full bg-[color:var(--rosa)] text-white hover:opacity-95">Entrar</button>
+            </div>
+            <p id="erroLogin" class="text-sm text-red-600 mt-2 hidden"></p>
+          </form>
+        </div>
+      </div>
+
+      <!-- Admin -->
+      <div id="boxAdmin" class="mt-6 hidden">
+        <div class="grid md:grid-cols-2 gap-6">
+          <!-- Criar/Editar item -->
+          <div class="border border-[#f2e6ea] rounded-2xl p-5 bg-[#fffafa]">
+            <h4 class="font-serifa text-xl">Cadastrar item</h4>
+            <form id="formNovo" class="mt-4 space-y-3">
+              <div>
+                <label class="block text-sm mb-1 text-[#6a5050]">Título</label>
+                <input id="nTitulo" class="w-full rounded-lg border border-[#f2e6ea] p-3" placeholder="Ex.: Coxinha, Brigadeiro, Fatia Morango"/>
+              </div>
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-sm mb-1 text-[#6a5050]">Preço (R$)</label>
+                  <input id="nPreco" type="number" min="0" step="0.01" class="w-full rounded-lg border border-[#f2e6ea] p-3" placeholder="4.00"/>
+                </div>
+                <div>
+                  <label class="block text-sm mb-1 text-[#6a5050]">Estoque</label>
+                  <input id="nEstoque" type="number" min="0" class="w-full rounded-lg border border-[#f2e6ea] p-3" placeholder="50"/>
+                </div>
+              </div>
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-sm mb-1 text-[#6a5050]">Categoria</label>
+                  <select id="nCategoria" class="w-full rounded-lg border border-[#f2e6ea] p-3">
+                    <option>Fatias</option>
+                    <option>Doces</option>
+                    <option>Salgados</option>
+                    <option>Bebidas</option>
+                    <option>Outros</option>
+                  </select>
+                </div>
+                <div class="flex items-center gap-2 mt-6">
+                  <input id="nAtivo" type="checkbox" class="w-4 h-4" checked/>
+                  <label for="nAtivo" class="text-sm text-[#6a5050]">Ativo (aparece no Balcão)</label>
+                </div>
+              </div>
+              <div>
+                <label class="block text-sm mb-1 text-[#6a5050]">Imagem (URL)</label>
+                <input id="nImagem" class="w-full rounded-lg border border-[#f2e6ea] p-3" placeholder="https://..."/>
+                <p class="text-xs text-[#8f6f6f] mt-1">Dica: cole um link de imagem (pode ser do seu armazenamento).</p>
+              </div>
+              <div class="pt-2">
+                <button type="submit" class="px-5 py-2 rounded-full bg-[color:var(--rosa)] text-white hover:opacity-95">Adicionar</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Gerenciar itens -->
+          <div class="border border-[#f2e6ea] rounded-2xl p-5 bg-[#fffafa]">
+            <h4 class="font-serifa text-xl">Itens cadastrados</h4>
+            <div class="mt-3">
+              <input id="buscaAdmin" class="w-full rounded-lg border border-[#f2e6ea] p-3" placeholder="Buscar por título..."/>
+            </div>
+            <div id="listaAdmin" class="mt-4 space-y-3 max-h-[420px] overflow-auto pr-1"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAB Carrinho (mobile) -->
+  <button id="fabCarrinho" aria-label="Abrir carrinho" class="cart-fab flex md:hidden items-center justify-center w-14 h-14 p-0">
+    <span id="iconCarrinhoFab" class="relative inline-flex items-center justify-center w-10 h-10 rounded-full bg-white text-[color:var(--rosa)]">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 6h15l-1.5 9H8.5L7 3H2"/>
+        <circle cx="9" cy="21" r="1.5"/>
+        <circle cx="18" cy="21" r="1.5"/>
+      </svg>
+      <span id="badgeQtdFab" class="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 rounded-full bg-[color:var(--rosa)] text-white text-[10px] font-semibold flex items-center justify-center shadow">0</span>
+    </span>
+  </button>
+
+  <!-- Toast (aviso) -->
+  <div id="toast" class="fixed left-1/2 bottom-6 -translate-x-1/2 hidden z-[95] px-4 py-2 rounded-full bg-[color:var(--rosa)] text-white shadow-lg">
+    Adicionado ao carrinho
+  </div>
+
+  <script type="module">
+    // Ano
+    const anoEl = document.getElementById('ano'); if(anoEl){ anoEl.textContent = new Date().getFullYear(); }
+
+    // Carrinho (compartilhado)
+    const pedido = [];
+    const moeda = v => Number(v).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+    const badge = document.getElementById('badgeQtd');
+    const badgeFab = document.getElementById('badgeQtdFab');
+    const atualizarBadge = () => {
+      if(badge) {
+        badge.textContent = pedido.length;
+        const icon = document.getElementById('iconCarrinho');
+        if(icon){
+          icon.classList.remove('ring-2','ring-white','scale-110');
+          void icon.offsetWidth; // reflow
+          icon.classList.add('scale-110');
+          setTimeout(()=>icon.classList.remove('scale-110'),180);
+          icon.classList.add('ring-2','ring-white');
+          setTimeout(()=>icon.classList.remove('ring-2','ring-white'),400);
         }
+      }
+      if(badgeFab){ badgeFab.textContent = pedido.length; }
+    };
+
+    function renderPedido(){
+      const ul = document.getElementById('listaPedido'); if(!ul) return;
+      ul.innerHTML = '';
+      let total = 0;
+      pedido.forEach((p,i)=>{
+        total += p.preco;
+        const li = document.createElement('li');
+        li.className = 'py-3 flex items-start justify-between gap-4';
+        const detalhes = [
+          p.opcao || '',
+          p.recheio ? 'Recheio: '+p.recheio : '',
+          p.sabor ? 'Sabor: '+p.sabor : '',
+          p.desc || '',
+          p.obs ? 'Obs: '+p.obs : '',
+          p.origem ? 'Origem: '+p.origem : ''
+        ].filter(Boolean).join(' | ');
+        li.innerHTML = `
+          <div>
+            <div class="font-medium">${p.titulo}</div>
+            <div class="text-sm text-[#6a5050]">${detalhes}</div>
+          </div>
+          <div class="flex items-center gap-4">
+            <span class="font-medium">${moeda(p.preco)}</span>
+            <button data-i="${i}" class="remover px-3 py-1.5 rounded-full border border-[#ec5a89] text-[color:var(--rosa)] hover:bg-[#ffeaf1]">Remover</button>
+          </div>`;
+        ul.appendChild(li);
+      });
+      const tot = document.getElementById('total');
+      if(tot) tot.textContent = moeda(total);
+      document.querySelectorAll('.remover').forEach(b=>{
+        b.addEventListener('click', ()=>{
+          const idx = Number(b.getAttribute('data-i'));
+          pedido.splice(idx,1);
+          renderPedido();
+          atualizarBadge();
+        });
       });
     }
-    ensurePlaceholders();
 
-    // Trocar uma foto individual
-    document.querySelectorAll('.btnTrocarUma').forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        const id = btn.getAttribute('data-target');
-        const url = prompt('Cole o URL da sua foto real:');
-        if(url){
-          const el = document.getElementById(id);
-          el.src = url.trim();
-          el.style.background = 'none';
-        }
-      });
+    document.getElementById('btnCarrinhoTopo')?.addEventListener('click', ()=>{ document.getElementById('modalCarrinho').classList.remove('hidden'); const icon = document.getElementById('iconCarrinho'); if(icon){ icon.classList.add('scale-110'); setTimeout(()=>icon.classList.remove('scale-110'),180); }});
+    document.getElementById('fecharCarrinho')?.addEventListener('click', ()=>document.getElementById('modalCarrinho').classList.add('hidden'));
+    document.getElementById('btnLimpar')?.addEventListener('click', ()=>{ pedido.length=0; renderPedido(); atualizarBadge(); });
+    document.getElementById('fabCarrinho')?.addEventListener('click', ()=>{
+      document.getElementById('modalCarrinho')?.classList.remove('hidden');
+      const icon = document.getElementById('iconCarrinhoFab');
+      if(icon){ icon.classList.add('scale-110'); setTimeout(()=>icon.classList.remove('scale-110'),180); }
     });
 
-    // Trocar todas as fotos de uma vez
-    document.getElementById('btnTrocarTodas').addEventListener('click', ()=>{
-      const urls = {
-        imgHero: prompt('URL para a foto do bolo em destaque:') || '',
-        imgSobre: prompt('URL para a foto da confeiteira/ateliê:') || '',
-        imgBoloSimples: prompt('URL para a foto dos bolos simples:') || '',
-        imgBoloAndares: prompt('URL para a foto dos bolos de andares:') || '',
-        imgRecheios: prompt('URL para a foto dos recheios/extras:') || '',
-        imgTortas: prompt('URL para a foto das tortas:') || '',
-        dep1: prompt('URL para a foto do depoimento 1:') || '',
-        dep2: prompt('URL para a foto do depoimento 2:') || '',
-        dep3: prompt('URL para a foto do depoimento 3:') || ''
+    // Menu mobile (abre/fecha)
+    const btnMobile = document.getElementById('btnMobile');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if(btnMobile){
+      btnMobile.addEventListener('click', ()=>{
+        if(mobileMenu){ mobileMenu.classList.toggle('hidden'); }
+      });
+    }
+    const btnCarrinhoMobile = document.getElementById('btnCarrinhoMobile');
+    if(btnCarrinhoMobile){
+      btnCarrinhoMobile.addEventListener('click', ()=>{
+        if(mobileMenu) mobileMenu.classList.add('hidden');
+        document.getElementById('modalCarrinho')?.classList.remove('hidden');
+      });
+    }
+    const btnAdminMobile = document.getElementById('btnAdminMobile');
+    if(btnAdminMobile){
+      btnAdminMobile.addEventListener('click', ()=>{
+        if(mobileMenu) mobileMenu.classList.add('hidden');
+        document.getElementById('modalAdmin')?.classList.remove('hidden');
+      });
+    }
+    document.querySelectorAll('.mobile-link').forEach(a=>a.addEventListener('click', ()=> mobileMenu?.classList.add('hidden')));
+
+    // WhatsApp destino (substitua pelo seu, ex: '5599999999999')
+    const numeroWhats = '55';
+    document.getElementById('btnEnviar')?.addEventListener('click', async ()=>{
+      if(!pedido.length){ alert('Seu pedido está vazio.'); return; }
+      // Valida dados do cliente
+      const nome = (document.getElementById('cliNome')?.value||'').trim();
+      const tel = (document.getElementById('cliTel')?.value||'').trim();
+      const pg = (document.getElementById('cliPagamento')?.value||'').trim();
+      const obsCli = (document.getElementById('cliObs')?.value||'').trim();
+      if(!nome || !tel){ alert('Informe nome e telefone.'); return; }
+
+      // Abater estoque de itens do Balcão apenas agora
+      try{
+        const ids = pedido.filter(p=>p.origem==='Balcão' && p.itemId).map(p=>p.itemId);
+        const contagem = ids.reduce((acc,id)=>{ acc[id]=(acc[id]||0)+1; return acc; },{});
+        for(const id of Object.keys(contagem)){
+          const it = cacheItens.find(x=>x.id===id);
+          if(!it) continue;
+          const novoEstoque = Math.max(0, (it.data.estoque||0) - contagem[id]);
+          await updateDoc(doc(db,'balcao_itens',id), { estoque: novoEstoque, updatedAt: serverTimestamp() });
+        }
+      }catch(e){
+        alert('Não foi possível atualizar o estoque agora.');
+        return;
+      }
+
+      const linhas = pedido.map(p=>{
+        const partes = [p.titulo, p.opcao].filter(Boolean).join(' | ');
+        const extras = [p.recheio ? 'Recheio: '+p.recheio : '', p.sabor ? 'Sabor: '+p.sabor : '', p.desc || '', p.obs ? 'Obs: '+p.obs : '', p.origem ? 'Origem: '+p.origem : ''].filter(Boolean).join(' | ');
+        return `• ${partes} — ${moeda(p.preco)}${extras ? ' | '+extras : ''}`;
+      }).join('%0A');
+      const total = document.getElementById('total')?.textContent || '';
+      const msg = `Olá! Meu nome é ${nome}.%0ATelefone: ${tel}%0AForma de pagamento: ${pg}%0A${obsCli?`Observações: ${obsCli}%0A`:''}%0APedido:%0A${linhas}%0A%0ATotal: ${total}`;
+      window.open(`https://wa.me/${numeroWhats}?text=${msg}`, '_blank');
+    });
+
+    // Modal Encomendas (reaproveitado)
+    const modalOpcoes = document.getElementById('modalOpcoes');
+    const inpOpcao = document.getElementById('inpOpcao');
+    const inpRecheio = document.getElementById('inpRecheio');
+    const inpSabor = document.getElementById('inpSabor');
+    let contexto = null;
+
+    function preencherOpcoes(btn){
+      const titulo = btn.getAttribute('data-title');
+      const categoria = btn.getAttribute('data-categoria');
+      const opcoes = JSON.parse(btn.getAttribute('data-opcoes') || '[]');
+      const temRecheio = btn.getAttribute('data-temrecheio') === 'true' || categoria === 'bolo';
+      const temSabor = btn.getAttribute('data-temsabor') === 'true' || categoria === 'torta';
+
+      document.getElementById('tituloModal').textContent = `Adicionar: ${titulo}`;
+      inpOpcao.innerHTML = '';
+      opcoes.forEach((o,idx)=>{
+        const opt = document.createElement('option');
+        opt.value = idx;
+        opt.textContent = `${o.label} — ${moeda(o.preco)}`;
+        opt.dataset.preco = o.preco;
+        opt.dataset.desc = o.desc || '';
+        inpOpcao.appendChild(opt);
+      });
+      document.getElementById('descTexto').textContent = opcoes[0]?.desc || '';
+
+      document.getElementById('grupoRecheio').classList.toggle('hidden', !temRecheio);
+      document.getElementById('grupoSabor').classList.toggle('hidden', !temSabor);
+
+      contexto = { titulo, categoria, opcoes, temRecheio, temSabor };
+      modalOpcoes.classList.remove('hidden');
+    }
+
+    document.querySelectorAll('.abrir-opcoes').forEach(btn=>{
+      btn.addEventListener('click', ()=> preencherOpcoes(btn));
+    });
+    inpOpcao?.addEventListener('change', ()=>{
+      const opt = inpOpcao.options[inpOpcao.selectedIndex];
+      document.getElementById('descTexto').textContent = opt?.dataset?.desc || '';
+    });
+    document.getElementById('fecharOpcoes')?.addEventListener('click', ()=>modalOpcoes.classList.add('hidden'));
+    document.getElementById('cancelarOpcoes')?.addEventListener('click', ()=>modalOpcoes.classList.add('hidden'));
+    document.getElementById('formOpcoes')?.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      if(!contexto) return;
+      const idx = Number(inpOpcao.value) || 0;
+      const op = contexto.opcoes[idx] || contexto.opcoes[0];
+      const item = {
+        titulo: contexto.titulo,
+        opcao: op.label,
+        preco: Number(op.preco),
+        recheio: contexto.temRecheio ? inpRecheio.value : '',
+        sabor: contexto.temSabor ? inpSabor.value : '',
+        desc: op.desc || '',
+        obs: document.getElementById('inpObs').value.trim(),
+        origem: 'Encomendas'
       };
-      Object.entries(urls).forEach(([id, url])=>{
-        const el = document.getElementById(id);
-        if(el && url){
-          el.src = url.trim();
-          el.style.background = 'none';
-        }
+      pedido.push(item);
+      // anima no botão principal do modal
+      const submitBtn = e.target.querySelector('button[type="submit"]');
+      if(submitBtn){
+        submitBtn.classList.add('scale-95');
+        setTimeout(()=>submitBtn.classList.remove('scale-95'),150);
+      }
+      renderPedido();
+      atualizarBadge();
+      showToast('Adicionado ao carrinho');
+      modalOpcoes.classList.add('hidden');
+      document.getElementById('modalCarrinho').classList.remove('hidden');
+      document.getElementById('inpObs').value = '';
+    });
+
+    // =========================
+    // Firebase (Real) - Balcão
+    // =========================
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
+    import { getFirestore, collection, addDoc, onSnapshot, doc, updateDoc, deleteDoc, serverTimestamp, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-firestore.js";
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCReQByuuyYVtCM6-2eiqWNIZ_GkSBKgcI",
+      authDomain: "soraia-sena.firebaseapp.com",
+      projectId: "soraia-sena",
+      storageBucket: "soraia-sena.firebasestorage.app",
+      messagingSenderId: "615393969089",
+      appId: "1:615393969089:web:07c89898b95c2fc9d8e540",
+      measurementId: "G-46F3Y1YEW7"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const colBalcao = collection(db, 'balcao_itens');
+
+    // Render Balcão
+    const gridBalcao = document.getElementById('gridBalcao');
+    let filtroAtivo = 'todos';
+    let cacheItens = [];
+
+    function cardBalcao(item, id){
+      const esgotado = (item.estoque || 0) <= 0 || item.ativo === false;
+      const img = item.imagem ? `<img alt="${item.titulo}" class="w-full h-40 object-cover rounded-xl" src="${item.imagem}"/>` : '';
+      return `
+        <div class="border border-[#f2e6ea] rounded-2xl p-5 bg-white relative overflow-hidden">
+          ${item.imagem ? `<div class="rounded-xl overflow-hidden mb-3">${img}</div>`:''}
+          ${esgotado ? '<div class="absolute inset-0 bg-white/70 backdrop-blur flex items-center justify-center text-[color:var(--rosa)] font-semibold">Indisponível</div>' : ''}
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <div class="font-serifa text-xl">${item.titulo || ''}</div>
+              <div class="mt-1 text-[#6a5050] text-sm">${moeda(item.preco || 0)}</div>
+            </div>
+            <span class="badge ${esgotado?'bg-[#fde2ea] text-[#a0647a] border border-[#f7c8d6]':'bg-[#ecfdf5] text-[#065f46] border border-[#a7f3d0]'}">
+              ${esgotado?'Indisponível':'Estoque: '+(item.estoque||0)}
+            </span>
+          </div>
+          <div class="mt-4 flex items-center justify-between">
+            <span class="text-xs px-2 py-1 rounded-full bg-[#fff1f6] text-[color:var(--rosa)] border border-[#f6d6e2]">${item.categoria || 'Outros'}</span>
+            <button data-id="${id}" class="btnAddBalcao px-4 py-2 rounded-full ${esgotado?'bg-gray-200 text-gray-400 cursor-not-allowed':'bg-[color:var(--rosa)] text-white hover:opacity-95'}">Adicionar</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderBalcao(){
+      if(!gridBalcao) return;
+      const lista = cacheItens.filter(({data})=> filtroAtivo==='todos' ? true : (data.categoria===filtroAtivo));
+      gridBalcao.innerHTML = lista.map(it => cardBalcao(it.data, it.id)).join('');
+      document.querySelectorAll('.btnAddBalcao').forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          const id = btn.getAttribute('data-id');
+          const it = cacheItens.find(x=>x.id===id);
+          if(!it) return;
+          const item = it.data;
+          if(item.ativo===false || (item.estoque||0)<=0) return;
+          // Apenas adiciona ao carrinho; o estoque será abatido no envio para WhatsApp
+          pedido.push({
+            titulo: item.titulo,
+            opcao: '',
+            preco: Number(item.preco||0),
+            recheio: '',
+            sabor: '',
+            desc: '',
+            obs: '',
+            origem: 'Balcão',
+            itemId: id
+          });
+          // anima feedback no botão
+          btn.classList.add('scale-95');
+          btn.classList.add('shadow-lg');
+          setTimeout(()=>{ btn.classList.remove('scale-95'); btn.classList.remove('shadow-lg'); },220);
+          renderPedido();
+          atualizarBadge();
+          showToast('Adicionado ao carrinho');
+        });
+      });
+    }
+
+    // Snapshot em tempo real
+    onSnapshot(query(colBalcao, orderBy('titulo','asc')), (snap)=>{
+      cacheItens = [];
+      snap.forEach(docu=>{
+        cacheItens.push({ id: docu.id, data: docu.data() });
+      });
+      renderBalcao();
+    });
+
+    // Filtros
+    document.querySelectorAll('.filtro').forEach(b=>{
+      b.addEventListener('click', ()=>{
+        document.querySelectorAll('.filtro').forEach(x=>x.classList.remove('bg-[color:var(--rosa)]','text-white'));
+        b.classList.add('bg-[color:var(--rosa)]','text-white');
+        filtroAtivo = b.getAttribute('data-filtro');
+        renderBalcao();
       });
     });
+
+    // =========================
+    // Painel Admin (demo)
+    // =========================
+    const modalAdmin = document.getElementById('modalAdmin');
+    const boxLogin = document.getElementById('boxLogin');
+    const boxAdmin = document.getElementById('boxAdmin');
+    const formLogin = document.getElementById('formLogin');
+    const lEmail = document.getElementById('lEmail');
+    const lSenha = document.getElementById('lSenha');
+    const erroLogin = document.getElementById('erroLogin');
+    const btnCriarConta = document.getElementById('btnCriarConta');
+    const btnSair = document.getElementById('btnSair');
+    const userInfo = document.getElementById('userInfo');
+
+    document.getElementById('btnAbrirAdmin')?.addEventListener('click', ()=>modalAdmin.classList.remove('hidden'));
+    document.getElementById('btnAdmin')?.addEventListener('click', ()=>modalAdmin.classList.remove('hidden'));
+    document.getElementById('fecharAdmin')?.addEventListener('click', ()=>modalAdmin.classList.add('hidden'));
+
+    // Firebase Auth
+    const auth = getAuth(app);
+    onAuthStateChanged(auth, (user)=>{
+      if(user){
+        boxLogin?.classList.add('hidden');
+        boxAdmin?.classList.remove('hidden');
+        btnSair?.classList.remove('hidden');
+        userInfo?.classList.remove('hidden');
+        userInfo.textContent = user.email;
+      } else {
+        boxAdmin?.classList.add('hidden');
+        boxLogin?.classList.remove('hidden');
+        btnSair?.classList.add('hidden');
+        userInfo?.classList.add('hidden');
+        userInfo.textContent = '';
+      }
+    });
+
+    formLogin?.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      erroLogin.classList.add('hidden');
+      try{
+        await signInWithEmailAndPassword(auth, lEmail.value.trim(), lSenha.value);
+        lSenha.value = '';
+      }catch(err){
+        erroLogin.textContent = 'Falha no login. Verifique os dados.';
+        erroLogin.classList.remove('hidden');
+      }
+    });
+
+
+
+    btnSair?.addEventListener('click', ()=> signOut(auth));
+
+    const formNovo = document.getElementById('formNovo');
+    formNovo?.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const titulo = document.getElementById('nTitulo').value.trim();
+      const preco = Number(document.getElementById('nPreco').value);
+      const estoque = Number(document.getElementById('nEstoque').value);
+      const categoria = document.getElementById('nCategoria').value;
+      const ativo = document.getElementById('nAtivo').checked;
+      const imagem = document.getElementById('nImagem').value.trim();
+
+      if(!titulo){ alert('Informe o título.'); return; }
+      try{
+        await addDoc(colBalcao, { titulo, preco, estoque, categoria, ativo, imagem, createdAt: serverTimestamp(), updatedAt: serverTimestamp() });
+        formNovo.reset();
+        document.getElementById('nAtivo').checked = true;
+        alert('Item cadastrado!');
+      }catch(err){
+        alert('Erro ao cadastrar. Verifique as regras do Firestore.');
+      }
+    });
+
+    const listaAdmin = document.getElementById('listaAdmin');
+    const buscaAdmin = document.getElementById('buscaAdmin');
+
+    function linhaAdmin(it, id){
+      return `
+        <div class="rounded-xl border border-[#f2e6ea] bg-white p-3">
+          <div class="flex items-start justify-between gap-3">
+            <div class="flex-1">
+              <div class="font-medium">${it.titulo || ''}</div>
+              <div class="text-xs text-[#8f6f6f]">${it.categoria || 'Outros'} • ${moeda(it.preco||0)} • Estoque: ${it.estoque||0}</div>
+              ${it.imagem?`<div class="mt-2"><img src="${it.imagem}" alt="${it.titulo}" class="w-full h-28 object-cover rounded-lg"/></div>`:''}
+            </div>
+            <div class="text-right min-w-[180px] space-y-2">
+              <div class="flex items-center gap-2">
+                <label class="text-xs text-[#6a5050]">Preço</label>
+                <input type="number" step="0.01" value="${it.preco||0}" data-id="${id}" data-k="preco" class="admInp w-24 rounded-lg border border-[#f2e6ea] p-1.5 text-right"/>
+              </div>
+              <div class="flex items-center gap-2">
+                <label class="text-xs text-[#6a5050]">Estoque</label>
+                <input type="number" value="${it.estoque||0}" data-id="${id}" data-k="estoque" class="admInp w-24 rounded-lg border border-[#f2e6ea] p-1.5 text-right"/>
+              </div>
+              <div class="flex items-center justify-end gap-2">
+                <button data-id="${id}" class="btnToggle px-3 py-1.5 rounded-full ${it.ativo===false?'bg-gray-200 text-gray-700':'bg-[#ecfdf5] text-[#065f46]'}">${it.ativo===false?'Ativar':'Desativar'}</button>
+                <button data-id="${id}" class="btnExcluir px-3 py-1.5 rounded-full border border-[#ec5a89] text-[color:var(--rosa)]">Excluir</button>
+              </div>
+            </div>
+          </div>
+          <div class="mt-3 grid grid-cols-2 gap-2">
+            <div class="flex items-center gap-2">
+              <label class="text-xs text-[#6a5050]">Categoria</label>
+              <select data-id="${id}" data-k="categoria" class="admSel rounded-lg border border-[#f2e6ea] p-1.5">
+                ${['Fatias','Doces','Salgados','Bebidas','Outros'].map(c=>`<option ${it.categoria===c?'selected':''}>${c}</option>`).join('')}
+              </select>
+            </div>
+            <div class="flex items-center gap-2">
+              <label class="text-xs text-[#6a5050]">Imagem (URL)</label>
+              <input type="text" value="${it.imagem||''}" data-id="${id}" data-k="imagem" class="admInp w-full rounded-lg border border-[#f2e6ea] p-1.5"/>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderAdminLista(){
+      if(!listaAdmin) return;
+      const q = (buscaAdmin?.value||'').toLowerCase();
+      const lst = cacheItens.filter(o => (o.data.titulo||'').toLowerCase().includes(q));
+      listaAdmin.innerHTML = lst.map(o => linhaAdmin(o.data, o.id)).join('');
+      // Eventos de editar
+      document.querySelectorAll('.admInp').forEach(inp=>{
+        inp.addEventListener('change', async ()=>{
+          const id = inp.getAttribute('data-id');
+          const k = inp.getAttribute('data-k');
+          let v = inp.value;
+          if(k==='preco') v = Number(v);
+          if(k==='estoque') v = Number(v);
+          try{ await updateDoc(doc(db,'balcao_itens',id), { [k]: v, updatedAt: serverTimestamp() }); }
+          catch(e){ alert('Falha ao salvar.'); }
+        });
+      });
+      document.querySelectorAll('.admSel').forEach(sel=>{
+        sel.addEventListener('change', async ()=>{
+          const id = sel.getAttribute('data-id');
+          const k = sel.getAttribute('data-k');
+          const v = sel.value;
+          try{ await updateDoc(doc(db,'balcao_itens',id), { [k]: v, updatedAt: serverTimestamp() }); }
+          catch(e){ alert('Falha ao salvar.'); }
+        });
+      });
+      document.querySelectorAll('.btnToggle').forEach(btn=>{
+        btn.addEventListener('click', async ()=>{
+          const id = btn.getAttribute('data-id');
+          const it = cacheItens.find(x=>x.id===id);
+          if(!it) return;
+          try{ await updateDoc(doc(db,'balcao_itens',id), { ativo: it.data.ativo===false ? true : false, updatedAt: serverTimestamp() }); }
+          catch(e){ alert('Falha ao alternar disponibilidade.'); }
+        });
+      });
+      document.querySelectorAll('.btnExcluir').forEach(btn=>{
+        btn.addEventListener('click', async ()=>{
+          const id = btn.getAttribute('data-id');
+          if(confirm('Excluir este item permanentemente?')){
+            try{ await deleteDoc(doc(db,'balcao_itens',id)); }
+            catch(e){ alert('Falha ao excluir.'); }
+          }
+        });
+      });
+    }
+
+    buscaAdmin?.addEventListener('input', ()=>renderAdminLista());
+    // Re-render admin quando snapshot atualizar
+    onSnapshot(query(colBalcao, orderBy('titulo','asc')), ()=>{
+      renderAdminLista();
+    });
+
+    // Aviso rápido (toast)
+function showToast(msg){
+  const t = document.getElementById('toast');
+  if(!t) return;
+  t.textContent = msg || 'Adicionado ao carrinho';
+  t.classList.remove('hidden');
+  t.style.opacity = '0';
+  t.style.transform = 'translate(-50%, 8px)';
+  requestAnimationFrame(()=>{
+    t.style.transition = 'opacity .2s ease, transform .2s ease';
+    t.style.opacity = '1';
+    t.style.transform = 'translate(-50%, 0)';
+  });
+  setTimeout(()=>{
+    t.style.opacity = '0';
+    t.style.transform = 'translate(-50%, 8px)';
+    setTimeout(()=>{ t.classList.add('hidden'); }, 220);
+  }, 1400);
+}
+
+// Inicializa
+    renderPedido();
+    atualizarBadge();
   </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97135b5bd6186d7c',t:'MTc1NTU0MDUxMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'971be66d33bd2740',t:'MTc1NTYzMDA5Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
