@@ -17,7 +17,6 @@
     .demo-frame{ background:linear-gradient(135deg,#fff,#fff) padding-box,linear-gradient(135deg,rgba(212,175,55,.35),rgba(236,90,137,.35)) border-box; border:2px solid transparent;border-radius:16px; }
     .whats-fab{ position:fixed;right:18px;bottom:18px;z-index:60;background:#25D366;color:#fff;border-radius:999px;box-shadow:0 12px 24px rgba(37,211,102,.35); }
     .badge{ display:inline-flex; align-items:center; gap:.35rem; padding:.2rem .55rem; border-radius:999px; font-size:12px; }
-    .cart-fab{ position:fixed; right:18px; bottom:18px; z-index:60; background: var(--rosa); color:#fff; border-radius:999px; box-shadow:0 12px 24px rgba(236,90,137,.35); }
   </style>
 </head>
 <body class="font-body text-[17px] leading-relaxed text-[color:var(--choc)] bg-[#fff1f6]">
@@ -136,7 +135,7 @@
         <div>
           <h2 class="text-3xl md:text-4xl font-serifa text-[color:var(--choc)]">Cardápio de Encomendas</h2>
           <div class="mt-2 h-1 w-28 rounded-full" style="background:linear-gradient(90deg,#d4af37,#ec5a89);"></div>
-          <p class="mt-3 text-[#6a5050]">Clique em “Adicionar” e personalize seu pedido.</p>
+          <p class="mt-3 text-[#6a5050]">Clique em "Adicionar" e personalize seu pedido.</p>
         </div>
         <div class="flex items-center gap-2 text-sm text-[#6a5050]">
           <span class="chip">🍰 Bolos</span>
@@ -279,17 +278,17 @@
       <div class="mt-8 grid md:grid-cols-3 gap-8">
         <div class="border border-[#f2e6ea] rounded-2xl p-5 bg-white">
           <div class="demo-frame p-2"><img alt="Bolo entregue ao cliente" class="w-full h-40 object-cover rounded-xl" src="https://images.unsplash.com/photo-1627202518147-1c78586e04b3?q=80&w=1200&auto=format&fit=crop" /></div>
-          <p class="mt-4 text-[#6a5050]">“Perfeito! O bolo estava maravilhoso e lindo. Atendimento impecável.”</p>
+          <p class="mt-4 text-[#6a5050]">"Perfeito! O bolo estava maravilhoso e lindo. Atendimento impecável."</p>
           <p class="mt-1 text-sm text-[#8f6f6f]">— Ana Paula</p>
         </div>
         <div class="border border-[#f2e6ea] rounded-2xl p-5 bg-white">
           <div class="demo-frame p-2"><img alt="Bolo temático" class="w-full h-40 object-cover rounded-xl" src="https://images.unsplash.com/photo-1494346480775-936a1c6a87e2?q=80&w=1200&auto=format&fit=crop" /></div>
-          <p class="mt-4 text-[#6a5050]">“Entrega no horário e sabor incrível! Fez toda a diferença na festa.”</p>
+          <p class="mt-4 text-[#6a5050]">"Entrega no horário e sabor incrível! Fez toda a diferença na festa."</p>
           <p class="mt-1 text-sm text-[#8f6f6f]">— Rodrigo</p>
         </div>
         <div class="border border-[#f2e6ea] rounded-2xl p-5 bg-white">
           <div class="demo-frame p-2"><img alt="Torta decorada" class="w-full h-40 object-cover rounded-xl" src="https://images.unsplash.com/photo-1551024709-8f23befc6cf7?q=80&w=1200&auto=format&fit=crop" /></div>
-          <p class="mt-4 text-[#6a5050]">“A decoração ficou de cinema e o recheio delicioso. Recomendo!”</p>
+          <p class="mt-4 text-[#6a5050]">"A decoração ficou de cinema e o recheio delicioso. Recomendo!"</p>
           <p class="mt-1 text-sm text-[#8f6f6f]">— Juliana</p>
         </div>
       </div>
@@ -310,7 +309,7 @@
         </div>
       </div>
       <div class="demo-frame p-2">
-        <iframe title="Mapa - Soraia Sena Confeitaria Artesanal" class="w-full h-[360px] rounded-xl" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Av%20Jos%C3%A9%20da%20C%C3%A2mara%20Vieira%2C%20Vila%20Sotave&output=embed"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3948.. !2d-34.. !3d-8.. !2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7aae3006ee4e80d%3A0xad31fb1f71a83d23!2sSoraia%20Sena%20-%20Confeitaria%20ArtesanL!5e0!3m2!1spt-BR!2sbr!4v. !5m2!1spt-BR!2sbr" title="Mapa - Soraia Sena Confeitaria Artesanal" class="w-full h-[360px] rounded-xl" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
   </section>
@@ -459,6 +458,28 @@
     </div>
   </div>
 
+  <!-- Modal Sabor Balcão -->
+  <div id="modalSaborBalcao" class="fixed inset-0 bg-black/40 backdrop-blur-sm hidden z-[85]">
+    <div class="relative mx-4 sm:mx-auto sm:w-full sm:max-w-md top-32 rounded-2xl bg-white p-6 shadow-xl">
+      <div class="flex items-center justify-between">
+        <h3 id="tituloSaborModal" class="font-serifa text-xl">Escolher Sabor</h3>
+        <button class="px-3 py-1.5 rounded-full bg-[#ffeaf1] text-[color:var(--rosa)]" id="fecharSaborBalcao">Fechar</button>
+      </div>
+
+      <form id="formSaborBalcao" class="mt-4 space-y-4">
+        <div>
+          <label class="block text-sm text-[#6a5050] mb-1">Sabor</label>
+          <select id="inpSaborBalcao" class="w-full rounded-lg border border-[#f2e6ea] p-3"></select>
+        </div>
+
+        <div class="flex items-center justify-end gap-2">
+          <button type="button" id="cancelarSaborBalcao" class="px-4 py-2 rounded-full border border-[#ec5a89] text-[color:var(--rosa)] hover:bg-[#ffeaf1]">Cancelar</button>
+          <button type="submit" class="px-5 py-2 rounded-full bg-[color:var(--rosa)] text-white hover:opacity-95">Adicionar ao carrinho</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <!-- Modal Admin (Balcão em Firebase) -->
   <div id="modalAdmin" class="fixed inset-0 bg-black/40 backdrop-blur-sm hidden z-[100]">
     <div class="relative mx-4 sm:mx-auto sm:w-full sm:max-w-5xl top-16 sm:top-20 rounded-2xl bg-white p-6 shadow-xl">
@@ -537,6 +558,15 @@
                 <input id="nImagem" class="w-full rounded-lg border border-[#f2e6ea] p-3" placeholder="https://..."/>
                 <p class="text-xs text-[#8f6f6f] mt-1">Dica: cole um link de imagem (pode ser do seu armazenamento).</p>
               </div>
+              <div class="flex items-center gap-2">
+                <input id="nTemSabores" type="checkbox" class="w-4 h-4"/>
+                <label for="nTemSabores" class="text-sm text-[#6a5050]">Tem opções de sabores</label>
+              </div>
+              <div id="grupoSaboresAdmin" class="hidden">
+                <label class="block text-sm mb-1 text-[#6a5050]">Sabores disponíveis (um por linha)</label>
+                <textarea id="nSabores" class="w-full rounded-lg border border-[#f2e6ea] p-3" rows="4" placeholder="Chocolate&#10;Morango&#10;Baunilha&#10;Limão"></textarea>
+                <p class="text-xs text-[#8f6f6f] mt-1">Digite cada sabor em uma linha separada.</p>
+              </div>
               <div class="pt-2">
                 <button type="submit" class="px-5 py-2 rounded-full bg-[color:var(--rosa)] text-white hover:opacity-95">Adicionar</button>
               </div>
@@ -557,16 +587,21 @@
   </div>
 
   <!-- FAB Carrinho (mobile) -->
-  <button id="fabCarrinho" aria-label="Abrir carrinho" class="cart-fab flex md:hidden items-center justify-center w-14 h-14 p-0">
-    <span id="iconCarrinhoFab" class="relative inline-flex items-center justify-center w-10 h-10 rounded-full bg-white text-[color:var(--rosa)]">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <button id="fabCarrinho" class="md:hidden fixed right-4 bottom-4 z-60 w-14 h-14 rounded-full bg-[color:var(--rosa)] text-white shadow-lg flex items-center justify-center" aria-label="Abrir carrinho">
+    <div class="relative">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M6 6h15l-1.5 9H8.5L7 3H2"/>
         <circle cx="9" cy="21" r="1.5"/>
         <circle cx="18" cy="21" r="1.5"/>
       </svg>
-      <span id="badgeQtdFab" class="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 rounded-full bg-[color:var(--rosa)] text-white text-[10px] font-semibold flex items-center justify-center shadow">0</span>
-    </span>
+      <span id="badgeQtdFab" class="absolute -top-2 -right-2 min-w-[18px] h-[18px] px-1 rounded-full bg-white text-[color:var(--rosa)] text-[10px] font-semibold flex items-center justify-center shadow">0</span>
+    </div>
   </button>
+
+  <!-- FAB WhatsApp (desktop) -->
+  <a href="https://wa.me/55" target="_blank" rel="noopener" aria-label="WhatsApp" class="hidden md:flex whats-fab items-center justify-center w-14 h-14 p-0">
+    <img alt="WhatsApp" src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png" class="w-7 h-7"/>
+  </a>
 
   <!-- Toast (aviso) -->
   <div id="toast" class="fixed left-1/2 bottom-6 -translate-x-1/2 hidden z-[95] px-4 py-2 rounded-full bg-[color:var(--rosa)] text-white shadow-lg">
@@ -582,20 +617,26 @@
     const moeda = v => Number(v).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
     const badge = document.getElementById('badgeQtd');
     const badgeFab = document.getElementById('badgeQtdFab');
-    const atualizarBadge = () => {
-      if(badge) {
-        badge.textContent = pedido.length;
-        const icon = document.getElementById('iconCarrinho');
-        if(icon){
-          icon.classList.remove('ring-2','ring-white','scale-110');
-          void icon.offsetWidth; // reflow
-          icon.classList.add('scale-110');
-          setTimeout(()=>icon.classList.remove('scale-110'),180);
-          icon.classList.add('ring-2','ring-white');
-          setTimeout(()=>icon.classList.remove('ring-2','ring-white'),400);
-        }
+    const atualizarBadge = () => { 
+      const qtd = pedido.length;
+      if(badge) badge.textContent = qtd;
+      if(badgeFab) badgeFab.textContent = qtd;
+      const icon = document.getElementById('iconCarrinho'); 
+      const fab = document.getElementById('fabCarrinho');
+      if(icon){ 
+        icon.classList.remove('ring-2','ring-white','scale-110'); 
+        void icon.offsetWidth; 
+        icon.classList.add('scale-110'); 
+        setTimeout(()=>icon.classList.remove('scale-110'),180); 
+        icon.classList.add('ring-2','ring-white'); 
+        setTimeout(()=>icon.classList.remove('ring-2','ring-white'),400); 
       }
-      if(badgeFab){ badgeFab.textContent = pedido.length; }
+      if(fab){
+        fab.classList.remove('scale-110');
+        void fab.offsetWidth;
+        fab.classList.add('scale-110');
+        setTimeout(()=>fab.classList.remove('scale-110'),180);
+      }
     };
 
     function renderPedido(){
@@ -638,13 +679,9 @@
     }
 
     document.getElementById('btnCarrinhoTopo')?.addEventListener('click', ()=>{ document.getElementById('modalCarrinho').classList.remove('hidden'); const icon = document.getElementById('iconCarrinho'); if(icon){ icon.classList.add('scale-110'); setTimeout(()=>icon.classList.remove('scale-110'),180); }});
+    document.getElementById('fabCarrinho')?.addEventListener('click', ()=>{ document.getElementById('modalCarrinho').classList.remove('hidden'); });
     document.getElementById('fecharCarrinho')?.addEventListener('click', ()=>document.getElementById('modalCarrinho').classList.add('hidden'));
     document.getElementById('btnLimpar')?.addEventListener('click', ()=>{ pedido.length=0; renderPedido(); atualizarBadge(); });
-    document.getElementById('fabCarrinho')?.addEventListener('click', ()=>{
-      document.getElementById('modalCarrinho')?.classList.remove('hidden');
-      const icon = document.getElementById('iconCarrinhoFab');
-      if(icon){ icon.classList.add('scale-110'); setTimeout(()=>icon.classList.remove('scale-110'),180); }
-    });
 
     // Menu mobile (abre/fecha)
     const btnMobile = document.getElementById('btnMobile');
@@ -806,10 +843,10 @@ import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from
 
     function cardBalcao(item, id){
       const esgotado = (item.estoque || 0) <= 0 || item.ativo === false;
-      const img = item.imagem ? `<img alt="${item.titulo}" class="w-full h-40 object-cover rounded-xl" src="${item.imagem}"/>` : '';
+      const img = item.imagem ? `<img alt="${item.titulo}" class="w-full h-48 object-contain bg-gradient-to-br from-[#fff8fb] to-[#fff1f6] rounded-xl p-2" src="${item.imagem}"/>` : '';
       return `
         <div class="border border-[#f2e6ea] rounded-2xl p-5 bg-white relative overflow-hidden">
-          ${item.imagem ? `<div class="rounded-xl overflow-hidden mb-3">${img}</div>`:''}
+          ${item.imagem ? `<div class="rounded-xl overflow-hidden mb-3 bg-gradient-to-br from-[#fff8fb] to-[#fff1f6]">${img}</div>`:''}
           ${esgotado ? '<div class="absolute inset-0 bg-white/70 backdrop-blur flex items-center justify-center text-[color:var(--rosa)] font-semibold">Indisponível</div>' : ''}
           <div class="flex items-start justify-between gap-4">
             <div>
@@ -839,28 +876,81 @@ import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from
           if(!it) return;
           const item = it.data;
           if(item.ativo===false || (item.estoque||0)<=0) return;
-          // Apenas adiciona ao carrinho; o estoque será abatido no envio para WhatsApp
-          pedido.push({
-            titulo: item.titulo,
-            opcao: '',
-            preco: Number(item.preco||0),
-            recheio: '',
-            sabor: '',
-            desc: '',
-            obs: '',
-            origem: 'Balcão',
-            itemId: id
-          });
-          // anima feedback no botão
-          btn.classList.add('scale-95');
-          btn.classList.add('shadow-lg');
-          setTimeout(()=>{ btn.classList.remove('scale-95'); btn.classList.remove('shadow-lg'); },220);
-          renderPedido();
-          atualizarBadge();
-          showToast('Adicionado ao carrinho');
+          
+          // Verifica se tem sabores
+          if(item.sabores && item.sabores.length > 0){
+            abrirModalSaborBalcao(item, id);
+          } else {
+            // Adiciona direto ao carrinho
+            pedido.push({
+              titulo: item.titulo,
+              opcao: '',
+              preco: Number(item.preco||0),
+              recheio: '',
+              sabor: '',
+              desc: '',
+              obs: '',
+              origem: 'Balcão',
+              itemId: id
+            });
+            // anima feedback no botão
+            btn.classList.add('scale-95');
+            btn.classList.add('shadow-lg');
+            setTimeout(()=>{ btn.classList.remove('scale-95'); btn.classList.remove('shadow-lg'); },220);
+            renderPedido();
+            atualizarBadge();
+            showToast('Adicionado ao carrinho');
+          }
         });
       });
     }
+
+    // Modal Sabor Balcão
+    const modalSaborBalcao = document.getElementById('modalSaborBalcao');
+    const inpSaborBalcao = document.getElementById('inpSaborBalcao');
+    let itemSaborAtual = null;
+    let idSaborAtual = null;
+
+    function abrirModalSaborBalcao(item, id){
+      itemSaborAtual = item;
+      idSaborAtual = id;
+      document.getElementById('tituloSaborModal').textContent = `Escolher Sabor - ${item.titulo}`;
+      
+      inpSaborBalcao.innerHTML = '';
+      item.sabores.forEach(sabor => {
+        const opt = document.createElement('option');
+        opt.value = sabor;
+        opt.textContent = sabor;
+        inpSaborBalcao.appendChild(opt);
+      });
+      
+      modalSaborBalcao.classList.remove('hidden');
+    }
+
+    document.getElementById('fecharSaborBalcao')?.addEventListener('click', ()=>modalSaborBalcao.classList.add('hidden'));
+    document.getElementById('cancelarSaborBalcao')?.addEventListener('click', ()=>modalSaborBalcao.classList.add('hidden'));
+    document.getElementById('formSaborBalcao')?.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      if(!itemSaborAtual || !idSaborAtual) return;
+      
+      pedido.push({
+        titulo: itemSaborAtual.titulo,
+        opcao: '',
+        preco: Number(itemSaborAtual.preco||0),
+        recheio: '',
+        sabor: inpSaborBalcao.value,
+        desc: '',
+        obs: '',
+        origem: 'Balcão',
+        itemId: idSaborAtual
+      });
+      
+      renderPedido();
+      atualizarBadge();
+      showToast('Adicionado ao carrinho');
+      modalSaborBalcao.classList.add('hidden');
+      document.getElementById('modalCarrinho').classList.remove('hidden');
+    });
 
     // Snapshot em tempo real
     onSnapshot(query(colBalcao, orderBy('titulo','asc')), (snap)=>{
@@ -929,9 +1019,19 @@ import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from
       }
     });
 
-
-
     btnSair?.addEventListener('click', ()=> signOut(auth));
+
+    // Controle de sabores no admin
+    const nTemSabores = document.getElementById('nTemSabores');
+    const grupoSaboresAdmin = document.getElementById('grupoSaboresAdmin');
+    
+    nTemSabores?.addEventListener('change', ()=>{
+      if(nTemSabores.checked){
+        grupoSaboresAdmin.classList.remove('hidden');
+      } else {
+        grupoSaboresAdmin.classList.add('hidden');
+      }
+    });
 
     const formNovo = document.getElementById('formNovo');
     formNovo?.addEventListener('submit', async (e)=>{
@@ -942,12 +1042,32 @@ import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from
       const categoria = document.getElementById('nCategoria').value;
       const ativo = document.getElementById('nAtivo').checked;
       const imagem = document.getElementById('nImagem').value.trim();
+      const temSabores = document.getElementById('nTemSabores').checked;
+      const saboresTexto = document.getElementById('nSabores').value.trim();
 
       if(!titulo){ alert('Informe o título.'); return; }
+      
+      const itemData = { 
+        titulo, 
+        preco, 
+        estoque, 
+        categoria, 
+        ativo, 
+        imagem, 
+        createdAt: serverTimestamp(), 
+        updatedAt: serverTimestamp() 
+      };
+
+      if(temSabores && saboresTexto){
+        itemData.sabores = saboresTexto.split('\n').map(s => s.trim()).filter(s => s.length > 0);
+      }
+
       try{
-        await addDoc(colBalcao, { titulo, preco, estoque, categoria, ativo, imagem, createdAt: serverTimestamp(), updatedAt: serverTimestamp() });
+        await addDoc(colBalcao, itemData);
         formNovo.reset();
         document.getElementById('nAtivo').checked = true;
+        document.getElementById('nTemSabores').checked = false;
+        grupoSaboresAdmin.classList.add('hidden');
         alert('Item cadastrado!');
       }catch(err){
         alert('Erro ao cadastrar. Verifique as regras do Firestore.');
@@ -958,13 +1078,15 @@ import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from
     const buscaAdmin = document.getElementById('buscaAdmin');
 
     function linhaAdmin(it, id){
+      const saboresInfo = it.sabores && it.sabores.length > 0 ? `<div class="text-xs text-[#8f6f6f] mt-1">Sabores: ${it.sabores.join(', ')}</div>` : '';
       return `
         <div class="rounded-xl border border-[#f2e6ea] bg-white p-3">
           <div class="flex items-start justify-between gap-3">
             <div class="flex-1">
               <div class="font-medium">${it.titulo || ''}</div>
               <div class="text-xs text-[#8f6f6f]">${it.categoria || 'Outros'} • ${moeda(it.preco||0)} • Estoque: ${it.estoque||0}</div>
-              ${it.imagem?`<div class="mt-2"><img src="${it.imagem}" alt="${it.titulo}" class="w-full h-28 object-cover rounded-lg"/></div>`:''}
+              ${saboresInfo}
+              ${it.imagem?`<div class="mt-2"><img src="${it.imagem}" alt="${it.titulo}" class="w-full h-28 object-contain bg-gradient-to-br from-[#fff8fb] to-[#fff1f6] rounded-lg p-1"/></div>`:''}
             </div>
             <div class="text-right min-w-[180px] space-y-2">
               <div class="flex items-center gap-2">
@@ -1073,5 +1195,5 @@ function showToast(msg){
     renderPedido();
     atualizarBadge();
   </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'971be66d33bd2740',t:'MTc1NTYzMDA5Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9777132e36f997d0',t:'MTc1NjU4NjEyOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
